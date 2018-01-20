@@ -2,7 +2,8 @@
 #
 DEVICEID=$(sudo dmidecode -t 4 | grep ID | sed 's/.*ID://;s/ //g' | md5sum | awk '{print $1}')
 SERVERTYPE="MS"
-SERVERNAME="$SERVERTYPE-$DEVICEID-CPE"
+DATACENTER="CPE"
+SERVERNAME="$SERVERTYPE-$DEVICEID-$DATACENTER"
 DOMAINNAME="blackfisk.com"
 FQDN="$SERVERNAME.cpe.$DOMAINNAME"
 IPADDR=$(curl 'ipv4bot.whatismyipaddress.com')
