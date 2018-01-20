@@ -9,7 +9,7 @@ let servername = os.hostname()
 let ipAddress = {ip4: null, ip6: null}
 
 if (servername.split('-').length !== 3) {
-  servername = fs.readFileSync('/etc/servername.conf', 'utf8')
+  servername = fs.readFileSync('/etc/servername.conf', 'utf8').trim()
   console.log(servername)
 }
 
