@@ -1,11 +1,11 @@
 #!/bin/bash
 #
 DEVICEID=$(cat /proc/cpuinfo | grep Serial | cut -d ' ' -f 2)
-HOSTNAME="PI-$DEVICEID-CPE"
+HOSTNAME="MS-$DEVICEID-CPE"
 IPADDR=$(curl 'ipv4bot.whatismyipaddress.com')
-FQDN="$HOSTNAME.customer.blackfisk.com"
+FQDN="$HOSTNAME.cpe.blackfisk.com"
 DOMAINNAME="blackfisk.com"
-SERVERTYPE="PI"
+SERVERTYPE="MS"
 PRIVIPADDR=$(/sbin/ifconfig eth0 | awk '/inet / { print $2 }' | sed 's/addr://')
 sudo hostnamectl set-hostname "$HOSTNAME"
 curl -is -XGET 'https://api.apophisapp.com/iptables/add?ip='$IPADDR'&server='$HOSTNAME'&privateIP='$PRIVIPADDR
@@ -28,7 +28,7 @@ crontab -l | { cat; echo "@reboot curl -is -XGET 'https://api.apophisapp.com/ipt
 
 sudo adduser --disabled-password --gecos "" blackfisk
 sudo git clone https://github.com/blackfisk-tech/monitor-service.git /home/blackfisk/monitor-service/ -q
-sudo cd /home/blackfisk/monitor-service/
+cd /home/blackfisk/monitor-service/
 sudo npm install
 sudo pm2 start /home/blackfisk/monitor-service/index.js --name "Monitor Service"
 sudo pm2 startup ubuntu -u root --hp /root/
