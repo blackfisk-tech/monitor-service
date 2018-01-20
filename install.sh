@@ -1,14 +1,14 @@
 #!/bin/bash
 #
-DEVICEID=$(cat /proc/cpuinfo | grep Serial | cut -d ' ' -f 2)
-HOSTNAME="MS-$DEVICEID-CPE"
-IPADDR=$(curl 'ipv4bot.whatismyipaddress.com')
-FQDN="$HOSTNAME.cpe.blackfisk.com"
-DOMAINNAME="blackfisk.com"
+DEVICEID=$(sudo dmidecode -t 4 | grep ID | sed 's/.*ID://;s/ //g' | md5sum | awk '{print $1}')
 SERVERTYPE="MS"
-PRIVIPADDR=$(/sbin/ifconfig eth0 | awk '/inet / { print $2 }' | sed 's/addr://')
-curl -is -XGET 'https://api.apophisapp.com/iptables/add?ip='$IPADDR'&server='$HOSTNAME'&privateIP='$PRIVIPADDR
-curl -is -XGET 'https://api.apophisapp.com/iptables/?server='$HOSTNAME'&lastAction=install-system'
+SERVERNAME="$SERVERTYPE-$DEVICEID-CPE"
+DOMAINNAME="blackfisk.com"
+FQDN="$SERVERNAME.cpe.$DOMAINNAME"
+IPADDR=$(curl 'ipv4bot.whatismyipaddress.com')
+echo "$SERVERNAME" > /etc/servername.conf
+curl -is -XGET 'https://api.apophisapp.com/iptables/add?ip='$IPADDR'&server='$SERVERNAME'&privateIP='
+curl -is -XGET 'https://api.apophisapp.com/iptables/?server='$SERVERNAME'&lastAction=install-monitor'
 
 sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get update
@@ -17,13 +17,10 @@ sudo apt-get install jq nodejs git -y
 sudo apt-get upgrade -y
 sudo npm install pm2 -g
 
-echo "127.0.0.1 "$HOSTNAME >> sudo /etc/hosts
-echo "127.0.0.1 "$FQDN >> sudo /etc/hosts
+echo "127.0.0.1 "$SERVERNAME >> /etc/hosts
+echo "127.0.0.1 "$FQDN >> /etc/hosts
 
-echo sed -i 's/.*domain.*/domain $DOMAINNAME/' /etc/resolv.conf
-sudo sed -i 's/.*search.*/search $DOMAINNAME/' /etc/resolv.conf
-
-crontab -l | { cat; echo "@reboot curl -is -XGET 'https://api.apophisapp.com/iptables/?server=$HOSTNAME&lastAction=online-pending' > /dev/null 2>&1"; } | crontab -
+crontab -l | { cat; echo "@reboot curl -is -XGET 'https://api.apophisapp.com/iptables/?server=$SERVERNAME&lastAction=online-pending' > /dev/null 2>&1"; } | crontab -
 
 sudo adduser --disabled-password --gecos "" blackfisk
 sudo git clone https://github.com/blackfisk-tech/monitor-service.git /home/blackfisk/monitor-service/ -q
@@ -32,7 +29,3 @@ sudo npm install
 sudo pm2 start /home/blackfisk/monitor-service/index.js --name "Monitor Service"
 sudo pm2 startup
 sudo pm2 save
-
-curl -XGET 'https://api.apophisapp.com/iptables/?server='$HOSTNAME'&lastAction=reboot'
-
-reboot
