@@ -20,6 +20,7 @@ publicIp.v4().then(ip => {
 
 socket
   .on('connect', function () {
+    console.log(`connect ${servername} - ${ipAddress.ip4}`)
     heartbeat()
   })
   .on('bash', function (data) {
