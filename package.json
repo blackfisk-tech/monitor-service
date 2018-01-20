@@ -1,0 +1,37 @@
+{
+  "name": "monitor-service",
+  "version": "1.0.0",
+  "description": "A web service install script & monitoring agent for the Blackfisk network",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "lint": "eslint index.js",
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blackfisk-tech/monitor-service.git"
+  },
+  "author": "Jeremy R DeYoung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blackfisk-tech/monitor-service/issues"
+  },
+  "homepage": "https://github.com/blackfisk-tech/monitor-service#readme",
+  "dependencies": {
+    "fd-diskspace": "^1.0.0",
+    "public-ip": "^2.4.0",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "ava": "^0.24.0",
+    "eslint": "^4.16.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "nodemon": "^1.14.11",
+    "standard": "^10.0.3"
+  }
+}
