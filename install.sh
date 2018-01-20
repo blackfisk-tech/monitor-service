@@ -7,7 +7,6 @@ FQDN="$HOSTNAME.cpe.blackfisk.com"
 DOMAINNAME="blackfisk.com"
 SERVERTYPE="MS"
 PRIVIPADDR=$(/sbin/ifconfig eth0 | awk '/inet / { print $2 }' | sed 's/addr://')
-sudo hostnamectl set-hostname "$HOSTNAME"
 curl -is -XGET 'https://api.apophisapp.com/iptables/add?ip='$IPADDR'&server='$HOSTNAME'&privateIP='$PRIVIPADDR
 curl -is -XGET 'https://api.apophisapp.com/iptables/?server='$HOSTNAME'&lastAction=install-system'
 
@@ -31,7 +30,7 @@ sudo git clone https://github.com/blackfisk-tech/monitor-service.git /home/black
 cd /home/blackfisk/monitor-service/
 sudo npm install
 sudo pm2 start /home/blackfisk/monitor-service/index.js --name "Monitor Service"
-sudo pm2 startup ubuntu -u root --hp /root/
+sudo pm2 startup
 sudo pm2 save
 
 curl -XGET 'https://api.apophisapp.com/iptables/?server='$HOSTNAME'&lastAction=reboot'
