@@ -10,7 +10,6 @@ let ipAddress = {ip4: null, ip6: null}
 
 if (servername.split('-').length !== 3) {
   servername = fs.readFileSync('/etc/servername.conf', 'utf8').trim()
-  console.log(servername)
 }
 
 const socket = io.connect('https://ws.apophisapp.com', {query: 'servername=' + servername})

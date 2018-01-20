@@ -1,8 +1,20 @@
 #!/bin/bash
 #
-DEVICEID=$(sudo dmidecode -t 4 | grep ID | sed 's/.*ID://;s/ //g' | md5sum | awk '{print $1}')
+# ### ~/install.sh "PI" "$DEVICEID" "CPE"
+#
 SERVERTYPE="MS"
+if [ "$1" != ""]; then
+  SERVERTYPE="$1"
+fi
+DEVICEID=$(sudo dmidecode -t 4 | grep ID | sed 's/.*ID://;s/ //g' | md5sum | awk '{print $1}')
+if [ "$2" != ""]; then
+  DEVICEID="$1"
+fi
 DATACENTER="CPE"
+if [ "$3" != ""]; then
+  DATACENTER="$1"
+fi
+
 SERVERNAME="$SERVERTYPE-$DEVICEID-$DATACENTER"
 DOMAINNAME="blackfisk.com"
 FQDN="$SERVERNAME.cpe.$DOMAINNAME"
