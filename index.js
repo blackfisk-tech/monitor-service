@@ -5,7 +5,7 @@ const ds = require('fd-diskspace')
 const exec = require('child_process').exec
 const publicIp = require('public-ip')
 const bonjour = require('bonjour')()
-const usbDetect = require('usb-detection')
+// const usbDetect = require('usb-detection')
 
 let servername = os.hostname()
 let ipAddress = {ip4: null, ip6: null}
@@ -22,13 +22,15 @@ publicIp.v4().then(ip => {
 
 bonjour.publish({ name: servername, type: 'pi', port: 3000 })
 
-usbDetect.on('add', function (device) {
-  console.log('add', device)
-})
+/*
+  usbDetect.on('add', function (device) {
+    console.log('add', device)
+  })
 
-usbDetect.find(function (err, devices) {
-  console.log('find', devices, err)
-})
+  usbDetect.find(function (err, devices) {
+    console.log('find', devices, err)
+  })
+*/
 
 socket
   .on('connect', function () {
