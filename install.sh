@@ -6,13 +6,15 @@ SERVERTYPE="MS"
 if [ "$1" != "" ]; then
   SERVERTYPE="$1"
 fi
+
 DEVICEID=$(sudo dmidecode -t 4 | grep ID | sed 's/.*ID://;s/ //g' | md5sum | awk '{print $1}')
 if [ "$2" != "" ]; then
-  DEVICEID="$1"
+  DEVICEID="$2"
 fi
+
 DATACENTER="CPE"
 if [ "$3" != "" ]; then
-  DATACENTER="$1"
+  DATACENTER="$3"
 fi
 
 SERVERNAME="$SERVERTYPE-$DEVICEID-$DATACENTER"
