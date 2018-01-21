@@ -26,12 +26,8 @@ usbDetect.on('add', function (device) {
   console.log('add', device)
 })
 
-usbDetect.on('add:vid', function (device) {
-  console.log('add:vid', device)
-})
-
-usbDetect.on('add:vid:pid', function (device) {
-  console.log('add:vid:pid', device)
+usbDetect.find(function (err, devices) {
+  console.log('find', devices, err)
 })
 
 socket
