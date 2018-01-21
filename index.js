@@ -4,6 +4,8 @@ const fs = require('fs')
 const ds = require('fd-diskspace')
 const exec = require('child_process').exec
 const publicIp = require('public-ip')
+const bonjour = require('bonjour')()
+const usbDetect = require('usb-detection')
 
 let servername = os.hostname()
 let ipAddress = {ip4: null, ip6: null}
@@ -16,6 +18,20 @@ const socket = io.connect('https://ws.apophisapp.com', {query: 'servername=' + s
 
 publicIp.v4().then(ip => {
   ipAddress.ip4 = ip
+})
+
+bonjour.publish({ name: servername, type: 'pi', port: 3000 })
+
+usbDetect.on('add', function (device) {
+  console.log('add', device)
+})
+
+usbDetect.on('add:vid', function (device) {
+  console.log('add:vid', device)
+})
+
+usbDetect.on('add:vid:pid', function (device) {
+  console.log('add:vid:pid', device)
 })
 
 socket
@@ -34,6 +50,10 @@ socket
   })
 
 function heartbeat () {
+  bonjour.find({ type: 'pi' }, function (service) {
+    console.log('Found a PI server:', service)
+  })
+
   socket.emit('response', {
     command: 'heartbeat',
     clientID: socket.id,

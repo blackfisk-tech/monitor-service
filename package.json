@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/blackfisk-tech/monitor-service#readme",
   "dependencies": {
+    "bonjour": "^3.5.0",
     "fd-diskspace": "^1.0.0",
     "public-ip": "^2.4.0",
     "socket.io": "^2.0.4"
