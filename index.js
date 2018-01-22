@@ -5,6 +5,7 @@ const ds = require('fd-diskspace')
 const exec = require('child_process').exec
 const publicIp = require('public-ip')
 const bonjour = require('bonjour')()
+const _ = require('lodash')
 // const usbDetect = require('usb-detection')
 
 let servername = os.hostname()
@@ -46,12 +47,15 @@ socket
   .on('heartbeat', function (a, b, c) {
     heartbeat()
   })
-let browser = bonjour.find({ type: 'pi' }, function (service) {
+let browser = bonjour.find({}, function (service) {
   console.log(service.name)
 })
 
 function heartbeat () {
-  console.log(browser.services)
+  _.each(browser.services, item => {
+    console.log(item.name + ':' + item.type)
+  })
+  // console.log(browser.services)
 
   socket.emit('response', {
     command: 'heartbeat',
