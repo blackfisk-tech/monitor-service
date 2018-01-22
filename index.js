@@ -50,6 +50,15 @@ socket
   .on('heartbeat', function (a, b, c) {
     heartbeat()
   })
+  .on('error', function (error) {
+    console.error('error', error)
+  })
+  .on('connect_error', function (error) {
+    console.error('connect_error', error)
+  })
+  .on('connect_timeout', function (timeout) {
+    console.error('connect_timeout', timeout)
+  })
   .on('reconnecting', function (a, b, c) {
     console.error('reconnecting', a, b, c)
   })
