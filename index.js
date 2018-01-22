@@ -22,9 +22,9 @@ if (servername.split('-').length !== 3) {
 
 const socket = io.connect('https://ws.apophisapp.com', {query: 'servername=' + servername})
 
-manager.on('up', nodes => console.log('up:', nodes))
-manager.on('down', nodes => console.log('down:', nodes))
-manager.on('addPrinters', nodes => console.log('addPrinters:', nodes))
+manager.on('up', nodes => console.log('up:', JSON.stringify(nodes)))
+manager.on('down', nodes => console.log('down:', JSON.stringify(nodes)))
+// manager.on('addPrinters', nodes => console.log('addPrinters:', nodes))
 
 manager.start()
 
@@ -32,7 +32,7 @@ publicIp.v4().then(ip => {
   ipAddress.ip4 = ip
 })
 
-bonjour.publish({ name: servername, type: 'blackfisk', port: 443})
+bonjour.publish({name: servername, type: 'blackfisk', port: 443})
 
 /*
   usbDetect.on('add', function (device) {
