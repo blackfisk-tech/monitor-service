@@ -20,6 +20,7 @@
   "homepage": "https://github.com/blackfisk-tech/monitor-service#readme",
   "dependencies": {
     "bonjour": "^3.5.0",
+    "cupsdm": "^0.1.2",
     "fd-diskspace": "^1.0.0",
     "lodash": "^4.17.4",
     "public-ip": "^2.4.0",
