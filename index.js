@@ -49,7 +49,7 @@ socket
 
 function heartbeat () {
   bonjour.find({ }, function (service) {
-    console.log(service.name + ' ' + service.type)
+    console.log(service.name)
   })
 
   socket.emit('response', {
