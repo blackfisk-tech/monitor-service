@@ -69,6 +69,10 @@ manager.on('down', nodes => {
 
 manager.start()
 
+bonjour.find({type: 'ipp'}, function (service) {
+  console.log('ipp : ', service)
+})
+
 bonjour.find({type: 'blackfisk.server'}, function (service) {
   socket.emit('response', {
     command: 'blackfisk.server',
