@@ -7,6 +7,7 @@ const publicIp = require('public-ip')
 const bonjour = require('bonjour')()
 const _ = require('lodash')
 const cupsdm = require('cupsdm')
+const printers = require('node-printer')
 
 const manager = cupsdm.createManger({autoAddPrinters: false})
 
@@ -79,6 +80,8 @@ bonjour.find({type: 'blackfisk.server'}, function (service) {
     ...service
   })
 })
+
+console.log(printers.list())
 
 function heartbeat () {
   socket.emit('response', {
