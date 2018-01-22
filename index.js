@@ -5,7 +5,7 @@ const ds = require('fd-diskspace')
 const exec = require('child_process').exec
 const publicIp = require('public-ip')
 const bonjour = require('bonjour')()
-// const _ = require('lodash')
+const _ = require('lodash')
 const cupsdm = require('cupsdm')
 
 const manager = cupsdm.createManger({autoAddPrinters: false})
@@ -51,16 +51,20 @@ socket
   })
 
 manager.on('up', nodes => {
-  socket.emit('response', {
-    command: 'blackfisk.printer.up',
-    ...nodes
-  })
+  _.each(nodes, node =>
+    socket.emit('response', {
+      command: 'blackfisk.printer.up',
+      ...node
+    })
+  )
 })
 manager.on('down', nodes => {
-  socket.emit('response', {
-    command: 'blackfisk.printer.down',
-    ...nodes
-  })
+  _.each(nodes, node =>
+    socket.emit('response', {
+      command: 'blackfisk.printer.down',
+      ...node
+    })
+  )
 })
 
 manager.start()
