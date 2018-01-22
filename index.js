@@ -103,17 +103,14 @@ function execErrorHandling (error, stdout, stderr) {
   })
 }
 
-_.each(cups.list(), printer => {
-  console.log(printer.connection)
-  if (printer.connection.indexOf('implicitclass') === -1) {
-    socket.emit('response', {
-      command: 'blackfisk.printer',
-      ...printer
-    })
-  }
-})
-/*
-  (async () => {
-    console.log('list of printers', await cups.list())
-  })()
-*/
+(async () => {
+  _.each(await cups.list(), printer => {
+    console.log(printer.connection)
+    if (printer.connection.indexOf('implicitclass') === -1) {
+      socket.emit('response', {
+        command: 'blackfisk.printer',
+        ...printer
+      })
+    }
+  })
+})()
