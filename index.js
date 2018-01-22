@@ -44,11 +44,20 @@ socket
   .on('bash', function (data) {
     exec(data.cmd, execErrorHandling)
   })
-  .on('disconnect', function () {
-    console.log('goodbye')
+  .on('disconnect', function (reason) {
+    console.log('goodbye', reason)
   })
   .on('heartbeat', function (a, b, c) {
     heartbeat()
+  })
+  .on('reconnecting', function (a, b, c) {
+    console.log('reconnecting', a, b, c)
+  })
+  .on('reconnect_error', function (a, b, c) {
+    console.log('reconnect_error', a, b, c)
+  })
+  .on('reconnect_failed', function (a, b, c) {
+    console.log('reconnect_failed', a, b, c)
   })
 
 manager.on('up', nodes => {
