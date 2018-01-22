@@ -28,7 +28,6 @@ bonjour.publish({name: servername, type: 'blackfisk.server', port: 443})
 
 /*
   usbDetect.on('add', function (device) {
-    console.log('add', device)
   })
 
   usbDetect.find(function (err, devices) {
