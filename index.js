@@ -5,14 +5,11 @@ const ds = require('fd-diskspace')
 const exec = require('child_process').exec
 const publicIp = require('public-ip')
 const bonjour = require('bonjour')()
-const _ = require('lodash')
+// const _ = require('lodash')
 const cupsdm = require('cupsdm')
 
 const manager = cupsdm.createManger({autoAddPrinters: false})
 
-// const usbDetect = require('usb-detection')
-
-let bonjourBrowser = null
 let servername = os.hostname()
 let ipAddress = {ip4: null, ip6: null}
 
@@ -22,17 +19,11 @@ if (servername.split('-').length !== 3) {
 
 const socket = io.connect('https://ws.apophisapp.com', {query: 'servername=' + servername})
 
-manager.on('up', nodes => console.log('up:', JSON.stringify(nodes)))
-manager.on('down', nodes => console.log('down:', JSON.stringify(nodes)))
-// manager.on('addPrinters', nodes => console.log('addPrinters:', nodes))
-
-manager.start()
-
 publicIp.v4().then(ip => {
   ipAddress.ip4 = ip
 })
 
-bonjour.publish({name: servername, type: 'blackfisk', port: 443})
+bonjour.publish({name: servername, type: 'blackfisk.server', port: 443})
 
 /*
   usbDetect.on('add', function (device) {
@@ -59,9 +50,24 @@ socket
     heartbeat()
   })
 
-bonjourBrowser = bonjour.find({type: 'blackfisk'}, function (service) {
+manager.on('up', nodes => {
   socket.emit('response', {
-    command: 'blackfisk',
+    command: 'blackfisk.printer.up',
+    ...nodes
+  })
+})
+manager.on('down', nodes => {
+  socket.emit('response', {
+    command: 'blackfisk.printer.down',
+    ...nodes
+  })
+})
+
+manager.start()
+
+bonjour.find({type: 'blackfisk.server'}, function (service) {
+  socket.emit('response', {
+    command: 'blackfisk.server',
     ...service
   })
 })
