@@ -48,7 +48,7 @@ socket
   })
 
 function heartbeat () {
-  bonjour.find({ }, function (service) {
+  bonjour.find({ type: 'pi' }, function (service) {
     console.log(service.name)
   })
 
