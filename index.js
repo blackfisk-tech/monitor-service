@@ -70,10 +70,6 @@ manager.on('down', nodes => {
 
 manager.start()
 
-bonjour.find({type: 'ipp'}, function (service) {
-  console.log('ipp : ', service)
-})
-
 bonjour.find({type: 'blackfisk.server'}, function (service) {
   socket.emit('response', {
     command: 'blackfisk.server',
@@ -107,6 +103,16 @@ function execErrorHandling (error, stdout, stderr) {
   })
 }
 
-(async () => {
-  console.log('list of printers', await cups.list())
-})()
+_.each(cups.list(), printer => {
+  if (printer.connection.indexOf('implicitclass') === -1) {
+    socket.emit('response', {
+      command: 'blackfisk.printer',
+      ...printer
+    })
+  }
+})
+/*
+  (async () => {
+    console.log('list of printers', await cups.list())
+  })()
+*/
