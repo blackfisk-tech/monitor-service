@@ -48,8 +48,8 @@ socket
   })
 
 function heartbeat () {
-  bonjour.find({ type: 'pi' }, function (service) {
-    console.log('Found a PI server:', service)
+  bonjour.find({ }, function (service) {
+    console.log(service.name + ' ' + server.type)
   })
 
   socket.emit('response', {
