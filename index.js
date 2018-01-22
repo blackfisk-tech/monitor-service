@@ -46,11 +46,12 @@ socket
   .on('heartbeat', function (a, b, c) {
     heartbeat()
   })
+let browser = bonjour.find({ type: 'pi' }, function (service) {
+  console.log(service.name)
+})
 
 function heartbeat () {
-  bonjour.find({ type: 'pi' }, function (service) {
-    console.log(service.name)
-  })
+  console.log(browser.services)
 
   socket.emit('response', {
     command: 'heartbeat',
