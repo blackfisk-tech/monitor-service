@@ -45,19 +45,19 @@ socket
     exec(data.cmd, execErrorHandling)
   })
   .on('disconnect', function (reason) {
-    console.log('goodbye', reason)
+    console.error('goodbye', reason)
   })
   .on('heartbeat', function (a, b, c) {
     heartbeat()
   })
   .on('reconnecting', function (a, b, c) {
-    console.log('reconnecting', a, b, c)
+    console.error('reconnecting', a, b, c)
   })
   .on('reconnect_error', function (a, b, c) {
-    console.log('reconnect_error', a, b, c)
+    console.error('reconnect_error', a, b, c)
   })
   .on('reconnect_failed', function (a, b, c) {
-    console.log('reconnect_failed', a, b, c)
+    console.error('reconnect_failed', a, b, c)
   })
 
 manager.on('up', nodes => {
@@ -114,7 +114,6 @@ function execErrorHandling (error, stdout, stderr) {
 
 (async () => {
   _.each(await cups.list(), printer => {
-    console.log(printer.connection)
     if (printer.connection.indexOf('implicitclass') === -1) {
       socket.emit('response', {
         command: 'blackfisk.printer',
