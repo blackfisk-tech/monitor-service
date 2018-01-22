@@ -43,6 +43,9 @@ socket
   .on('bash', function (data) {
     exec(data.cmd, execErrorHandling)
   })
+  .on('git', function (data) {
+    console.log('git deploy', data)
+  })
   .on('disconnect', function (reason) {
     console.error('goodbye', reason)
   })
