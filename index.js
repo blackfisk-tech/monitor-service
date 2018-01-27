@@ -12,18 +12,31 @@ const cups = require('ncups')
 const manager = cupsdm.createManger({autoAddPrinters: false})
 
 let servername = os.hostname()
-let ipAddress = {ip4: null, ip6: null}
+let ipAddress = {public: {ip4: null, ip6: null}, private: {ip4: null, ip6: null}}
 
 if (servername.split('-').length !== 3) {
   servername = fs.readFileSync('/etc/servername.conf', 'utf8').trim()
 }
-
-const socket = io.connect('https://ws.apophisapp.com', {query: 'servername=' + servername})
+const socket = io.connect(os.platform() === 'win32' ? 'http://localhost:3000' : 'https://ws.apophisapp.com', {query: 'servername=' + servername})
 
 publicIp.v4().then(ip => {
-  ipAddress.ip4 = ip
+  ipAddress.public.ip4 = ip
+  console.log(`connect ${servername} - ${ipAddress.public.ip4}`)
 })
 
+_.each(os.networkInterfaces(), iface => {
+  _.each(iface, adapter => {
+    if (adapter.address.match(/(^192\.168\.)|(^10\.)|(^172\.1[6-9]\.)|(^172\.2[0-9]\.)|(^172\.3[0-1]\.)|(^::1$)|(^[fF][cCdD])/) && !adapter.internal) {
+      if (ipAddress.private.ip4 === null) {
+        ipAddress.private.ip4 = adapter.address
+      }
+    }
+  })
+})
+
+/*
+  Announce Yourself on the network to see if any other services are listening
+ */
 bonjour.publish({name: servername, type: 'blackfisk.server', port: 443})
 
 /*
@@ -37,7 +50,6 @@ bonjour.publish({name: servername, type: 'blackfisk.server', port: 443})
 
 socket
   .on('connect', function () {
-    console.log(`connect ${servername} - ${ipAddress.ip4}`)
     heartbeat()
   })
   .on('bash', function (data) {
@@ -71,28 +83,11 @@ socket
     console.error('reconnect_failed', a, b, c)
   })
 
-manager.on('up', nodes => {
-  _.each(nodes, node =>
-    socket.emit('response', {
-      command: 'blackfisk.printer.up',
-      ...node
-    })
-  )
-})
-manager.on('down', nodes => {
-  _.each(nodes, node =>
-    socket.emit('response', {
-      command: 'blackfisk.printer.down',
-      ...node
-    })
-  )
-})
-
 manager.start()
 
 bonjour.find({type: 'blackfisk.server'}, function (service) {
-  socket.emit('response', {
-    command: 'blackfisk.server',
+  socket.emit('blackfisk', {
+    command: 'server',
     ...service
   })
 })
@@ -123,11 +118,32 @@ function execErrorHandling (error, stdout, stderr) {
   })
 }
 
-(async () => {
+/*
+  Record Printers
+ */
+manager.on('up', nodes => {
+  _.each(nodes, node =>
+    socket.emit('printer', {
+      command: 'printer.up',
+      ...node
+    })
+  )
+})
+
+manager.on('down', nodes => {
+  _.each(nodes, node =>
+    socket.emit('printer', {
+      command: 'printer.down',
+      ...node
+    })
+  )
+})
+
+;(async () => {
   _.each(await cups.list(), printer => {
     if (printer.connection.indexOf('implicitclass') === -1) {
-      socket.emit('response', {
-        command: 'blackfisk.printer',
+      socket.emit('printer', {
+        command: 'printer',
         ...printer
       })
     }
