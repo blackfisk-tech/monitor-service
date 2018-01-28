@@ -11,6 +11,8 @@ const cups = require('ncups')
 
 const manager = cupsdm.createManger({autoAddPrinters: false})
 
+let serverList = {}
+let printerList = {}
 let servername = os.hostname()
 let ipAddress = {public: {ip4: null, ip6: null}, private: {ip4: null, ip6: null}}
 
@@ -50,6 +52,7 @@ bonjour.publish({name: servername, type: 'blackfisk.server', port: 443})
 
 socket
   .on('connect', function () {
+    // console.log(socket.id)
     heartbeat()
   })
   .on('bash', function (data) {
@@ -85,14 +88,47 @@ socket
 
 manager.start()
 
-bonjour.find({type: 'blackfisk.server'}, function (service) {
-  socket.emit('blackfisk', {
-    command: 'server',
-    ...service
+function findOnlineServers () {
+  _.each(serverList, server => {
+    server.online = false
   })
-})
+
+  bonjour.find({type: 'blackfisk.server'}, function (server) {
+    serverList[server.name] = server
+    serverList[server.name]['online'] = true
+  })
+  console.log('running server')
+  socket.emit('blackfisk', {command: 'serverList', servers: serverList})
+}
+
+function findOnlinePrinters () {
+  _.each(printerList, printer => {
+    printer.online = false
+  })
+
+  ;(async () => {
+    _.each(await cups.list(), printer => {
+      console.log(printer)
+      if (printer.connection.indexOf('implicitclass') === -1) {
+        // printerList[printer.name] = printer
+        // printerList[printer.name]['online'] = true
+        /*
+          socket.emit('printer', {
+            command: 'printer',
+            ...printer
+          })
+        */
+      }
+    })
+  })()
+
+  socket.emit('blackfisk', {command: 'printerList', printers: printerList})
+}
 
 function heartbeat () {
+  console.log('heartbeat')
+  findOnlineServers()
+  findOnlinePrinters()
   socket.emit('response', {
     command: 'heartbeat',
     clientID: socket.id,
@@ -138,14 +174,3 @@ manager.on('down', nodes => {
     })
   )
 })
-
-;(async () => {
-  _.each(await cups.list(), printer => {
-    if (printer.connection.indexOf('implicitclass') === -1) {
-      socket.emit('printer', {
-        command: 'printer',
-        ...printer
-      })
-    }
-  })
-})()
