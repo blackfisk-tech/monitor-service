@@ -65,8 +65,10 @@ socket
   })
   .on('git', async function (data) {
     if (data.repo === 'monitor-service') {
-      exec('/home/blackfisk/monitor-service/upgrade.sh', execErrorHandling)
-      console.log('result')
+      await exec('chmod a+x /home/blackfisk/monitor-service/upgrade.sh', execErrorHandling)
+      console.log('chmod')
+      await exec('/home/blackfisk/monitor-service/upgrade.sh', execErrorHandling)
+      console.log('upgrade')
     }
   })
   .on('disconnect', function (reason) {
