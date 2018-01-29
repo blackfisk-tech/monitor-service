@@ -91,9 +91,11 @@ socket
   })
   .on('reconnect_error', function (a, b, c) {
     console.error('reconnect_error', a, b, c)
+    process.exit(0)
   })
   .on('reconnect_failed', function (a, b, c) {
     console.error('reconnect_failed', a, b, c)
+    process.exit(0)
   })
 
 manager.start()
