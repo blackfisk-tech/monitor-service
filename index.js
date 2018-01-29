@@ -67,9 +67,8 @@ socket
   .on('git', async function (data) {
     if (data.repo === 'monitor-service') {
       await exec('chmod a+x /home/blackfisk/monitor-service/upgrade.sh', execErrorHandling)
-      console.log('chmod')
+      await sleep(2000)
       await exec('/home/blackfisk/monitor-service/upgrade.sh', execErrorHandling)
-      console.log('upgrade')
     }
   })
   .on('disconnect', function (reason) {
@@ -178,3 +177,9 @@ manager.on('down', nodes => {
     })
   )
 })
+
+function sleep (ms) {
+  return new Promise(resolve => {
+    setTimeout(resolve, ms)
+  })
+}
