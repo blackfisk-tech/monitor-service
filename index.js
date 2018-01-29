@@ -9,7 +9,7 @@ const _ = require('lodash')
 const cupsdm = require('cupsdm')
 const cups = require('ncups')
 const Printer = require('node-printer')
-const pkg = require('package.json')
+const pkg = require('./package.json')
 
 const manager = cupsdm.createManger({autoAddPrinters: false})
 
