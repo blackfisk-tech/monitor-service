@@ -9,7 +9,7 @@ const _ = require('lodash')
 const cupsdm = require('cupsdm')
 const cups = require('ncups')
 const printer = require('node-printer')
-
+console.log(printer.list())
 const manager = cupsdm.createManger({autoAddPrinters: false})
 
 let serverList = {}
