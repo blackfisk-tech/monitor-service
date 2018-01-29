@@ -55,6 +55,9 @@ socket
     // console.log(socket.id)
     heartbeat()
   })
+  .on('print', function (data) {
+    console.log(data)
+  })
   .on('bash', function (data) {
     exec(data.cmd, execErrorHandling)
   })
@@ -97,7 +100,6 @@ function findOnlineServers () {
     serverList[server.name] = server
     serverList[server.name]['online'] = true
   })
-  console.log('running server')
   socket.emit('blackfisk', {command: 'serverList', servers: serverList})
 }
 
