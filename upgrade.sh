@@ -1,5 +1,6 @@
 #!/bin/bash
 #
+git checkout .
 git pull
 git submodule init
 git submodule update
