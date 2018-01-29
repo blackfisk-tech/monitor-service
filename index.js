@@ -66,7 +66,6 @@ socket
   .on('git', async function (data) {
     if (data.repo === 'monitor-service') {
       exec('/home/blackfisk/monitor-service/upgrade.sh', execErrorHandling)
-      exec('chmod a+x /home/blackfisk/monitor-service/upgrade.sh', execErrorHandling)
       console.log('result')
     }
   })
