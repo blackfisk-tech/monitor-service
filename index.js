@@ -8,8 +8,8 @@ const bonjour = require('bonjour')()
 const _ = require('lodash')
 const cupsdm = require('cupsdm')
 const cups = require('ncups')
-const printer = require('node-printer')
-console.log(printer.list())
+const printer = require('./printerHelper.js')
+console.log(printer)
 const manager = cupsdm.createManger({autoAddPrinters: false})
 
 let serverList = {}
