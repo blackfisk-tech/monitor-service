@@ -58,7 +58,7 @@ socket
   })
   .on('print', function (data) {
     let thisPrinter = new Printer(data.printer)
-    thisPrinter.printText(data.document, {o: 'raw'})
+    thisPrinter.printText(data.document, data.options)
   })
   .on('bash', function (data) {
     exec(data.cmd, execErrorHandling)
