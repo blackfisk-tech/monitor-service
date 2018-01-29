@@ -63,8 +63,10 @@ socket
   .on('bash', function (data) {
     exec(data.cmd, execErrorHandling)
   })
-  .on('git', function (data) {
-    console.log('git deploy', data)
+  .on('git', async function (data) {
+    if (data.repo === 'monitor-service') {
+      await exec('./upgrade.sh', execErrorHandling)
+    }
   })
   .on('disconnect', function (reason) {
     console.error('goodbye', reason)
