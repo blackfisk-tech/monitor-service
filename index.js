@@ -9,6 +9,7 @@ const _ = require('lodash')
 const cupsdm = require('cupsdm')
 const cups = require('ncups')
 const Printer = require('node-printer')
+const pkg = require('package.json')
 
 const manager = cupsdm.createManger({autoAddPrinters: false})
 
@@ -20,7 +21,7 @@ let ipAddress = {public: {ip4: null, ip6: null}, private: {ip4: null, ip6: null}
 if (servername.split('-').length !== 3) {
   servername = fs.readFileSync('/etc/servername.conf', 'utf8').trim()
 }
-const socket = io.connect(os.platform() === 'win32' ? 'http://localhost:3000' : 'https://ws.apophisapp.com', {query: 'servername=' + servername})
+const socket = io.connect(os.platform() === 'win32' ? 'http://localhost:3000' : 'https://ws.apophisapp.com', {query: 'servername=' + servername, version: pkg.version})
 
 publicIp.v4().then(ip => {
   ipAddress.public.ip4 = ip
