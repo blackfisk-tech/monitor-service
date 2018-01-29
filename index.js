@@ -8,6 +8,7 @@ const bonjour = require('bonjour')()
 const _ = require('lodash')
 const cupsdm = require('cupsdm')
 const cups = require('ncups')
+const printer = require('node-printer')
 
 const manager = cupsdm.createManger({autoAddPrinters: false})
 
@@ -56,7 +57,17 @@ socket
     heartbeat()
   })
   .on('print', function (data) {
-    console.log(data)
+    printer.printDirect({
+      data: data.document,
+      printer: data.printer,
+      type: 'RAW',
+      success: function () {
+        console.log(data)
+      },
+      error: function (err) {
+        console.error(err)
+      }
+    })
   })
   .on('bash', function (data) {
     exec(data.cmd, execErrorHandling)
