@@ -9,7 +9,7 @@ var printer_helper = {},
 if(fs.existsSync(binding_path)) {
     printer_helper = require(binding_path);
 } else {
-    printer_helper = require('node-printer');
+    printer_helper = require('./node_printer_'+process.platform+'_'+process.arch+'.node');
 }
 
 /** Return all installed printers including active jobs
