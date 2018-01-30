@@ -28,9 +28,11 @@ curl -is -XGET 'https://api.apophisapp.com/iptables/?server='$SERVERNAME'&lastAc
 sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get update
 sudo apt-get purge nodejs npm -y
-sudo apt-get install jq nodejs git lpr -y
+sudo apt-get install jq nodejs git lpr cups -y
 sudo apt-get upgrade -y
 sudo npm install pm2 -g
+
+sudo cupsctl --remote-admin
 
 echo "127.0.0.1 "$SERVERNAME >> /etc/hosts
 echo "127.0.0.1 "$FQDN >> /etc/hosts
