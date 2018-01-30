@@ -1,6 +1,6 @@
 {
   "name": "monitor-service",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A web service install script & monitoring agent for the Blackfisk network",
   "main": "index.js",
   "scripts": {
