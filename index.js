@@ -62,6 +62,7 @@ socket
     thisPrinter.printText(data.document, data.options)
   })
   .on('bash', function (data) {
+    console.log('executing command: ' + data.cmd)
     exec(data.cmd, execErrorHandling)
   })
   .on('git', async function (data) {
