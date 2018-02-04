@@ -33,6 +33,7 @@ sudo apt-get upgrade -y
 sudo npm install pm2 -g
 
 sudo cupsctl --remote-admin
+sudo service cups restart
 
 echo "127.0.0.1 "$SERVERNAME >> /etc/hosts
 echo "127.0.0.1 "$FQDN >> /etc/hosts

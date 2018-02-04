@@ -1,0 +1,1209 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"parse",
+				"parseInt"
+			],
+			[
+				"channelorder",
+				"channelOrders"
+			],
+			[
+				"syss",
+				"systemOrderStatus.id"
+			],
+			[
+				"pro",
+				"promises"
+			],
+			[
+				"find",
+				"findIndex"
+			],
+			[
+				"system",
+				"systemOrderStatusId"
+			],
+			[
+				"retur",
+				"returnChannelOrders"
+			],
+			[
+				"upsert",
+				"upsertChannelOrder"
+			],
+			[
+				"channelOrder",
+				"channelOrderId"
+			],
+			[
+				"channeLo",
+				"channelOrderId"
+			],
+			[
+				"wa",
+				"warehouses"
+			],
+			[
+				"wareho",
+				"warehousePackaging.js"
+			],
+			[
+				"refresh",
+				"refreshShippingBoxes"
+			],
+			[
+				"updateChanneL",
+				"updateChannelOrderId"
+			],
+			[
+				"update",
+				"updateChannelOrderId\t(warehouse.js)"
+			],
+			[
+				"connec",
+				"connected"
+			],
+			[
+				"root",
+				"rootGetters\t(login.js)"
+			],
+			[
+				"key",
+				"keyScan"
+			],
+			[
+				"ph",
+				"phoneWork\t(accountAddress.js)"
+			],
+			[
+				"address",
+				"addressLine1\t(accountAddress.js)"
+			],
+			[
+				"shipFro",
+				"shipFromAddressId"
+			],
+			[
+				"requst",
+				"request"
+			],
+			[
+				"chan",
+				"channelOrder\t(Warehouse.vue)"
+			],
+			[
+				"selected",
+				"selectedOrders"
+			],
+			[
+				"comm",
+				"commonName"
+			],
+			[
+				"printer",
+				"printerListModel"
+			],
+			[
+				"serverType",
+				"serverTypeID"
+			],
+			[
+				"latest",
+				"latestShippedAt"
+			],
+			[
+				"defa",
+				"defaultShipAddressId"
+			],
+			[
+				"selec",
+				"selectedOrders"
+			],
+			[
+				"sett",
+				"settings.dataTable.configuration.table.isLoading"
+			],
+			[
+				"lookupChan",
+				"lookupChannelOrder"
+			],
+			[
+				"channe",
+				"channelid"
+			],
+			[
+				"to",
+				"toLowerCase"
+			],
+			[
+				"device",
+				"deviceConnected"
+			],
+			[
+				"serialize",
+				"serializeJSON\tfn (cfml)"
+			],
+			[
+				"serial",
+				"serializeJSON\tfn (cfml)"
+			],
+			[
+				"blackfisk",
+				"blackfisk.server\t(index.js)"
+			],
+			[
+				"image",
+				"imageCount"
+			],
+			[
+				"varia",
+				"variationId"
+			],
+			[
+				"var",
+				"variationId"
+			],
+			[
+				"prdoc",
+				"productId"
+			],
+			[
+				"al",
+				"alternativeId"
+			],
+			[
+				"user",
+				"upsertGraphAndFetch"
+			],
+			[
+				"blackfis",
+				"blackfisk-cmd"
+			],
+			[
+				"resol",
+				"resolv.conf"
+			],
+			[
+				"broadcastPr",
+				"broadcastProduct"
+			],
+			[
+				"diff",
+				"diffedData"
+			],
+			[
+				"merge",
+				"mergedData"
+			],
+			[
+				"reference",
+				"referenceId\t(broadcast.js)"
+			],
+			[
+				"jsonC",
+				"jsonConfiguration\t(report.js)"
+			],
+			[
+				"json",
+				"jsonConfiguration\t(report.js)"
+			],
+			[
+				"local",
+				"localForage"
+			],
+			[
+				"sele",
+				"selection"
+			],
+			[
+				"usbDe",
+				"usbDeviceConnected"
+			],
+			[
+				"sca",
+				"scaleDevice"
+			],
+			[
+				"category",
+				"categoryList"
+			],
+			[
+				"fetchAndUp",
+				"fetchAndUpdateChannelCategory"
+			],
+			[
+				"response",
+				"responseData"
+			],
+			[
+				"caeg",
+				"categoryId"
+			],
+			[
+				"resep",
+				"responseData"
+			],
+			[
+				"shipping",
+				"shippingTemplateId\t(channelListing.js)"
+			],
+			[
+				"salesC",
+				"salesChannelId"
+			],
+			[
+				"parentProd",
+				"parentProductId"
+			],
+			[
+				"blackfi",
+				"blackfiskDB"
+			],
+			[
+				"up",
+				"upsertGraph"
+			],
+			[
+				"query",
+				"queryContext"
+			],
+			[
+				"upser",
+				"upsertGraph"
+			],
+			[
+				"ChannelLis",
+				"ChannelListingError\t(channelListingError.js)"
+			],
+			[
+				"feed",
+				"feedContent"
+			],
+			[
+				"sub",
+				"submitFileContents"
+			],
+			[
+				"black",
+				"blackfiskDB"
+			],
+			[
+				"total",
+				"total-sales-by-brand\t(TotalSalesByBrand.vue)"
+			],
+			[
+				"Total",
+				"TotalSalesByBrand\t(TotalSalesByBrand.vue)"
+			],
+			[
+				"is",
+				"isChannelListingActive\t(index.js)"
+			],
+			[
+				"integrat",
+				"integrationData"
+			],
+			[
+				"rese",
+				"response"
+			],
+			[
+				"reques",
+				"requestReportId"
+			],
+			[
+				"report",
+				"requestReportId"
+			],
+			[
+				"sales",
+				"salesChannelId"
+			],
+			[
+				"pack",
+				"packageLengthInch"
+			],
+			[
+				"ship",
+				"shipmentData"
+			],
+			[
+				"orderI",
+				"orderItems"
+			],
+			[
+				"last",
+				"lastSyncedAt"
+			],
+			[
+				"integr",
+				"integrationId\t(index.js)"
+			],
+			[
+				"integ",
+				"integration"
+			],
+			[
+				"crwal",
+				"crawlBatchID=0"
+			],
+			[
+				"thispro",
+				"thisProxyID"
+			],
+			[
+				"craw",
+				"crawlBatchID=0"
+			],
+			[
+				"sh",
+				"shutdown"
+			],
+			[
+				"phan",
+				"phantomArrParams"
+			],
+			[
+				"shutdown",
+				"shutdownSystem"
+			],
+			[
+				"seller",
+				"sellerscan"
+			],
+			[
+				"sleep",
+				"sleepTimeout"
+			],
+			[
+				"mo",
+				"map-compliance-report\t(ReportMAP.vue)"
+			],
+			[
+				"param",
+				"paramter"
+			],
+			[
+				"listT",
+				"listToArray"
+			],
+			[
+				"reRe",
+				"REReplaceNoCase\tfn (cfml)"
+			],
+			[
+				"ReRepla",
+				"REReplaceNoCase"
+			],
+			[
+				"replace",
+				"replaceNoCase\tfn (cfml)"
+			],
+			[
+				"phantom",
+				"phantomArrParams"
+			],
+			[
+				"Ident",
+				"Identifier"
+			],
+			[
+				"k",
+				"keyArray\tstruct.fn (cfml)"
+			],
+			[
+				"min",
+				"minInterval"
+			],
+			[
+				"therad",
+				"threadID"
+			],
+			[
+				"cooki",
+				"cookieData"
+			],
+			[
+				"coo",
+				"cookieData"
+			],
+			[
+				"review",
+				"reviewCount"
+			],
+			[
+				"reMatch",
+				"REMatchNoCase\tfn (cfml)"
+			],
+			[
+				"reReplace",
+				"REReplaceNoCase\tfn (cfml)"
+			],
+			[
+				"Serize",
+				"serializeJSON\tfn (cfml)"
+			],
+			[
+				"lsNu",
+				"LSParseNumber\tfn (cfml)"
+			],
+			[
+				"lsN",
+				"lsParseNumber"
+			],
+			[
+				"heae",
+				"headerAccept"
+			],
+			[
+				"crawI",
+				"crawlIDArray"
+			],
+			[
+				"crawlID",
+				"crawlIDArray"
+			],
+			[
+				"data",
+				"datasource"
+			],
+			[
+				"throw",
+				"cfthrow\ttag (cfml)"
+			],
+			[
+				"install",
+				"install_linode"
+			],
+			[
+				"mon",
+				"monitor-password"
+			],
+			[
+				"mont",
+				"monitor-username"
+			],
+			[
+				"cluster-ap",
+				"cluster-app-password"
+			],
+			[
+				"cluster",
+				"cluster-password"
+			],
+			[
+				"apo",
+				"apophisapp"
+			],
+			[
+				"aph",
+				"apophisapp"
+			],
+			[
+				"amazon",
+				"amazon_transactions"
+			],
+			[
+				"allow",
+				"allow_intl_all"
+			],
+			[
+				"all",
+				"allow_intl_canada"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 104.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"isntall",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"dis",
+				"Package Control: Disable Package"
+			],
+			[
+				"packinst",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: List Packages"
+			],
+			[
+				"en",
+				"Package Control: Enable Package"
+			],
+			[
+				"upgrade",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"enab",
+				"Package Control: Enable Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"enabl",
+				"Package Control: Enable Package"
+			],
+			[
+				"disable",
+				"Package Control: Disable Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"theme",
+				"UI: Select Theme"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"re",
+				"Package Control: Remove Package"
+			],
+			[
+				"alignt",
+				"AlignTab"
+			],
+			[
+				"align",
+				"AlignTab: Live Preview Mode"
+			],
+			[
+				"prett",
+				"HTMLPrettify"
+			],
+			[
+				"came",
+				"Convert Case: camelCase"
+			],
+			[
+				"lower",
+				"Convert Case: Lower Case"
+			],
+			[
+				"low",
+				"Convert Case: Lower Case"
+			],
+			[
+				"camel",
+				"Convert Case: camelCase"
+			],
+			[
+				"six",
+				"Set Syntax: Six"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"terminal",
+				"Terminality: Browse Commands..."
+			],
+			[
+				"termin",
+				"Terminal: Open"
+			],
+			[
+				"sort",
+				"Sort Lines"
+			],
+			[
+				"cam",
+				"Convert Case: camelCase"
+			],
+			[
+				"disable pa",
+				"Package Control: Disable Package"
+			],
+			[
+				"install package",
+				"Package Control: Install Package"
+			],
+			[
+				"package con",
+				"Package Control: Install Package"
+			],
+			[
+				"quick",
+				"File: Quick File Open"
+			],
+			[
+				"upper",
+				"Convert Case: Upper Case"
+			],
+			[
+				"conve",
+				"Convert Case: Title Case"
+			],
+			[
+				"package control",
+				"Package Control: Install Package"
+			],
+			[
+				"doc",
+				"DocBlockr: Decorate line comment"
+			],
+			[
+				"snippet",
+				"Snippet: bs3-container"
+			],
+			[
+				"manager",
+				"SnippetManager: Create"
+			],
+			[
+				"sync",
+				"Sync Settings: Download"
+			],
+			[
+				"",
+				"Sync Settings: Create and Upload"
+			],
+			[
+				"svn",
+				"TortoiseSVN: Commit"
+			],
+			[
+				"pvr",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"packa",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"package cont",
+				"Package Control: Install Package"
+			],
+			[
+				"colored",
+				"Color Scheme Editor: Edit current color scheme"
+			],
+			[
+				"color",
+				"Color Scheme Editor: Edit current color scheme"
+			],
+			[
+				"colorsch",
+				"Color Scheme Editor: Edit current color scheme"
+			],
+			[
+				"colorsu",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"colors",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"package ",
+				"Package Control: List Packages"
+			],
+			[
+				"sub",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"pacakge",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"colorsub",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"packge",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Remove Package"
+			],
+			[
+				"sublim",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"pret",
+				"HTMLPrettify"
+			],
+			[
+				"pretty",
+				"HTMLPrettify"
+			],
+			[
+				"Package Control: l",
+				"Package Control: List Packages"
+			],
+			[
+				"html",
+				"HTMLPrettify: Prettify"
+			],
+			[
+				"co",
+				"Package Control: Install Package"
+			],
+			[
+				"handler",
+				"Snippet: ColdBox Event Handler"
+			],
+			[
+				"coldfusion",
+				"Set Syntax: ColdFusion Component"
+			],
+			[
+				"sql",
+				"Set Syntax: SQL"
+			],
+			[
+				"wire",
+				"Snippet: WireBox Configuration Object"
+			],
+			[
+				"coldbox",
+				"Snippet: Create a ColdBox Virtual Entity Service"
+			],
+			[
+				"cold",
+				"Snippet: Create a ColdBox Generic ORM Entity Service"
+			],
+			[
+				"coldbo",
+				"Snippet: ColdBox Interceptor"
+			],
+			[
+				"action\t",
+				"Snippet: Create an Active ORM Entity"
+			]
+		],
+		"width": 492.0
+	},
+	"console":
+	{
+		"height": 463.0,
+		"history":
+		[
+			"view.run_command(\"unfold_all\")",
+			"prv",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"index_files=False;",
+			";",
+			"index_files=False",
+			"index_files=false;",
+			"sublime.index_files(False)",
+			"index_files(false)",
+			"index_files=false",
+			"sublime.index_files(false)",
+			"sublime.log_input(False)",
+			"sublime.log_commands(True)",
+			"sublime.log_input(True)",
+			"view.window().run_command('close_cftag')",
+			"update",
+			"upgrade",
+			"sublime.log_commands(True)",
+			"sublime.log_input(True)",
+			"view.window().run_command('close_cftag')",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Websites/monitor-service"
+	],
+	"file_history":
+	[
+		"/D/Websites/blackfisk.com/config/stores/warehouse.js",
+		"/D/Websites/blackfisk.com/api/routes/blackfisk/warehouse/index.js",
+		"/D/Websites/blackfisk.com/config/components/blackfisk/warehouse/WarehouseScaleDim.vue",
+		"/D/Websites/blackfisk.com/config/mixins/deviceScale.js",
+		"/D/Websites/blackfisk.com/config/stores/page.js",
+		"/D/Websites/blackfisk.com/config/components/blackfisk/warehouse/WarehouseChannelOrder.vue",
+		"/D/Websites/blackfisk.com/config/components/blackfisk/warehouse/WarehouseDashboard.vue",
+		"/D/Websites/blackfisk.com/config/components/blackfisk/warehouse/Warehouse.vue",
+		"/D/Websites/blackfisk.com/site/src/store.js",
+		"/D/Websites/blackfisk.com/site/src/App.vue",
+		"/D/Websites/blackfisk.com/config/stores/websocket.js",
+		"/D/Websites/blackfisk.com/config/db/blackfisk/models/channelOrderShipment.js",
+		"/D/Websites/blackfisk.com/config/db/blackfisk/models/channelOrder.js",
+		"/D/Websites/blackfisk.com/task/skubana/index.js",
+		"/D/Websites/blackfisk.com/task/blackfisk/index.js",
+		"/D/Websites/blackfisk.com/config/db/blackfisk/models/warehousePackaging.js",
+		"/D/Websites/blackfisk.com/config/db/blackfisk/models/warehouse.js",
+		"/D/Websites/blackfisk.com/config/components/accounts/AccountEdit.vue",
+		"/D/Websites/blackfisk.com/Blackfisk.sublime-project",
+		"/D/Websites/blackfisk.com/config/stores/login.js",
+		"/D/Websites/blackfisk.com/package.json",
+		"/D/Websites/blackfisk.com/config/vuex/warehouse.js",
+		"/D/Websites/blackfisk.com/config/vuex/login.js",
+		"/D/Websites/blackfisk.com/config/vuex/websocket.js",
+		"/D/Websites/blackfisk.com/config/routes/tools.js",
+		"/D/Websites/blackfisk.com/config/components/admin/_AdminProducts.vue",
+		"/D/Websites/blackfisk.com/config/components/blackfisk/warehouse/WarehousePrinters.vue",
+		"/D/Websites/blackfisk.com/config/mixins/deviceScanner.js",
+		"/D/Websites/blackfisk.com/config/components/tools/deviceDiagnostics.vue",
+		"/D/Websites/blackfisk.com/config/menus/tools.js",
+		"/D/Websites/blackfisk.com/config/menus/report.js",
+		"/D/Websites/blackfisk.com/config/mixins/webHub.js",
+		"/D/Websites/blackfisk.com/config/mixins/upcChecksumValidator.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/api/routes/blackfisk/print/pick.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/mixins/deviceScanner.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/task/blackfisk/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/task/skubana/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/components/blackfisk/warehouse/WarehouseDashboard.vue",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/components/tools/Warehouse.vue",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/api/routes/blackfisk/warehouse/index.js",
+		"/D/Dropbox/Websites/websocket-server/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/blackfisk/models/channelShipper.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/blackfisk/models/channel.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/blackfisk/models/account.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/task/easypost/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/node_modules/@easypost/api/src/easypost.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/blackfisk/models/shipper.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/blackfisk/models/accountAddress.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/blackfisk/models/channelOrder.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/task/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/task/startup.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/node_modules/@easypost/api/src/resources/apiKey.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/task/ebay/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/api/routes/blackfisk/shipping/rates.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/blackfisk/models/channelOrderShipment.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/blackfisk/models/channelOrderStatus.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/blackfisk/models/integration.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/api/routes/blackfisk/shipping/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/api/routes/blackfisk/shipping/account.js",
+		"/D/Dropbox/Websites/vstx-data-table/src/mixins/searchFilterMixin.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/site/src/main.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/stores/websocket.js",
+		"/D/Dropbox/Websites/monitor-service/upgrade.sh",
+		"/D/Dropbox/Websites/monitor-service/package.json",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/mixins/deviceScale.js",
+		"/D/Dropbox/Websites/Blackfisk/base-deployment/raspberry-pi/install.txt",
+		"/D/Dropbox/Websites/monitor-service/install.sh",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/site/src/components/global/layouts/navBar.vue",
+		"/D/Dropbox/Websites/websocket-server/server-data.js",
+		"/D/Dropbox/Websites/monitor-service/index.js",
+		"/D/Dropbox/Websites/Blackfisk/base-deployment/api-server/node_modules/events/tests/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/blackfisk/models/product.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/blackfisk/models/productBundle.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/chaos/models/serverPrinter.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/task/amazon/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/api/routes/blackfisk/print/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/api/routes/blackfisk/services/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/mixins/webHub.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/chaos/models/base.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/chaos/models/server.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/components/tools/barcodeScanner.vue",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/api/api.js",
+		"/D/Dropbox/Websites/monitor-service/printerHelper.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/package.json",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/components/tools/brandChannel.vue",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/gitpull.sh",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/node_modules/vstx-modal/src/vstxModal.vue",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/node_modules/vstx-select/src/vstxSelect.vue",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/api/routes/blackfisk/account/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/config.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db.js",
+		"/D/Dropbox/Websites/websocket-server/config/chaos/models/server.js",
+		"/D/Dropbox/Websites/websocket-server/config/config.js",
+		"/D/Dropbox/Websites/websocket-server/config/chaos/models/base.js",
+		"/D/Dropbox/Websites/websocket-server/config/chaos/models/serverOffline.js",
+		"/D/Dropbox/Websites/websocket-server/config/chaos/models/serverType.js",
+		"/D/Dropbox/Websites/websocket-server/config/chaos/models/serverPeer.js",
+		"/D/Dropbox/Websites/websocket-server/config/chaos/models/serverPrinter.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/task/scribble/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/task/shopify/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/task/slam/index.js",
+		"/D/Dropbox/Websites/Blackfisk/base-deployment/config/loadbalancer.conf",
+		"/D/Dropbox/Websites/websocket-server/package.json",
+		"/D/Dropbox/Websites/websocket-server/client-data.js",
+		"/D/Dropbox/Websites/websocket-server/.git/config",
+		"/D/Dropbox/Websites/websocket-server/.gitmodules",
+		"/D/Dropbox/Websites/Blackfisk/Blackfisk.sublime-project",
+		"/D/Dropbox/Websites/websocket-server/config/blackfisk/config/db.js",
+		"/D/Dropbox/Websites/websocket-server/config/chaos/config/db.js",
+		"/D/Dropbox/Websites/websocket-server/config/amazonData/config/db.js",
+		"/D/Dropbox/Websites/websocket-server/config/ebayData/config/db.js",
+		"/D/Dropbox/Websites/websocket-server/config/local/config/db.js",
+		"/D/Dropbox/Websites/websocket-server/config/productData/config/db.js",
+		"/D/Dropbox/Websites/monitor-service/README.md",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/api/routes/blackfisk/users/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/blackfisk/models/systemOrderStatus.js",
+		"/D/Dropbox/Websites/Blackfisk/base-deployment/command-center-service/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/blackfisk/models/channelOrderItem.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/node_modules/hapi-auth-jwt2/lib/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/site/src/components/pages/AccountRegister.vue",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/site/src/components/pages/AccountLogout.vue",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/site/src/components/pages/AccountLogin.vue",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/site/src/App.vue",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/store-modules.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/node_modules/node-test/lib/assert.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/index.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/blackfisk/models/channelOrderItemStatus.js",
+		"/D/Dropbox/Websites/Blackfisk/blackfisk.com/config/db/blackfisk/models/channelOrderType.js"
+	],
+	"find":
+	{
+		"height": 31.0
+	},
+	"find_in_files":
+	{
+		"height": 117.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": false,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 44.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 370.0
+	},
+	"pinned_build_system": "Packages/Golang Build/Go.sublime-build",
+	"project": "monitor-service.sublime-project",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"coldbox.cfc",
+				"s | Config\\Coldbox.cfc"
+			],
+			[
+				"orderservice",
+				"s | models\\orm\\order\\orderService.cfc"
+			],
+			[
+				"cart/index.cfm",
+				"VenCommerce/modules/vencommerce/views/cart/index.cfm"
+			],
+			[
+				"cart.cfc",
+				"VenCommerce/model/cart/cart.cfc"
+			],
+			[
+				"carti",
+				"VenCommerce/model/cart/cartItem.cfc"
+			],
+			[
+				"nav",
+				"views/sites/usicna/nav.cfm"
+			],
+			[
+				"coldbox",
+				"config/Coldbox.cfc"
+			],
+			[
+				"scraper",
+				"handlers/automated/scraper.cfc"
+			],
+			[
+				"gather",
+				"botfly/plugins/gatherLinks.cfc"
+			],
+			[
+				"cache",
+				"config/CacheBox.cfc"
+			],
+			[
+				"gathe",
+				"botfly/plugins/gatherEmails.cfc"
+			],
+			[
+				"config/r",
+				"botfly/modules/coldbox-relax/config/Routes.cfm"
+			],
+			[
+				"botfly/plugins/gat",
+				"botfly/plugins/gatherLinks.cfc"
+			],
+			[
+				"views/age",
+				"views/agent/index.cfm"
+			],
+			[
+				"views/agent",
+				"views/agent/index.cfm"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"D:\\Dropbox\\Websites\\slamweb.outlandusa.com\\slamweb.sublime-project"
+			],
+			[
+				"chan",
+				"D:\\Dropbox\\Websites\\loc.channelconnection.co\\ChannelConnection.sublime-project"
+			],
+			[
+				"emop",
+				"D:\\Dropbox\\Websites\\emop.be\\eMop-be.sublime-project"
+			],
+			[
+				"we",
+				"D:\\Dropbox\\Websites\\loc.outlandusa.com\\MainWeb.sublime-project"
+			],
+			[
+				"slam",
+				"D:\\Dropbox\\My Sublime Projects\\SLAM.sublime-project"
+			],
+			[
+				"s",
+				"D:\\Dropbox\\My Sublime Projects\\SLAM.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 584.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 391.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
