@@ -7,7 +7,9 @@ if [ "$1" != "" ]; then
   SERVERTYPE="$1"
 fi
 
-DEVICEID=$(sudo dmidecode -t 4 | grep ID | sed 's/.*ID://;s/ //g' | md5sum | awk '{print $1}')
+VMID=$(sudo dmidecode | grep -i uuid | awk '{print $2}' | tr '[:upper:]' '[:lower:]')
+DID=$(sudo dmidecode -t 4 | grep ID | sed 's/.*ID://;s/ //g')
+DEVICEID=$(echo "$VMID$DID" | md5sum | awk '{print $1}')
 if [ "$2" != "" ]; then
   DEVICEID="$2"
 fi
