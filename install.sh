@@ -32,8 +32,9 @@ curl -sL https://deb.nodesource.com/setup_8.x | -E bash -
 apt-get update
 apt-get install jq nodejs npm git lpr cups -y
 apt-get upgrade -y
+npm install -g npm@latest
 rm /usr/bin/npm
-/usr/local/bin/npm install -g npm@latest
+npm install -g npm@latest
 npm install pm2 -g
 
 cupsctl --remote-admin
@@ -47,7 +48,7 @@ crontab -l | { cat; echo "@reboot curl -is -XGET 'https://api.apophisapp.com/ipt
 adduser --disabled-password --gecos "" blackfisk
 git clone https://github.com/blackfisk-tech/monitor-service.git /home/blackfisk/monitor-service/ -q
 cd /home/blackfisk/monitor-service/
-/usr/local/bin/npm install
+npm install
 pm2 start /home/blackfisk/monitor-service/index.js --name "Monitor Service"
 pm2 startup
 pm2 save
