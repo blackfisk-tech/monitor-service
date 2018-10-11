@@ -7,8 +7,8 @@ if [ "$1" != "" ]; then
   SERVERTYPE="$1"
 fi
 
-VMID=$(sudo dmidecode | grep -i uuid | awk '{print $2}' | tr '[:upper:]' '[:lower:]')
-DID=$(sudo dmidecode -t 4 | grep ID | sed 's/.*ID://;s/ //g')
+VMID=$(dmidecode | grep -i uuid | awk '{print $2}' | tr '[:upper:]' '[:lower:]')
+DID=$(dmidecode -t 4 | grep ID | sed 's/.*ID://;s/ //g')
 DEVICEID=$(echo "$VMID$DID" | md5sum | awk '{print $1}')
 if [ "$2" != "" ]; then
   DEVICEID="$2"
@@ -27,25 +27,25 @@ echo "$SERVERNAME" > /etc/servername.conf
 curl -is -XGET 'https://api.apophisapp.com/iptables/add?ip='$IPADDR'&server='$SERVERNAME'&privateIP='
 curl -is -XGET 'https://api.apophisapp.com/iptables/?server='$SERVERNAME'&lastAction=install-monitor'
 
-sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-sudo apt-get update
-sudo apt-get purge nodejs npm -y
-sudo apt-get install jq nodejs npm git lpr cups -y
-sudo apt-get upgrade -y
-sudo npm install pm2 -g
+apt-get purge nodejs node npm -y
+curl -sL https://deb.nodesource.com/setup_8.x | -E bash -
+apt-get update
+apt-get install jq nodejs npm git lpr cups -y
+apt-get upgrade -y
+npm install pm2 -g
 
-sudo cupsctl --remote-admin
-sudo service cups restart
+cupsctl --remote-admin
+service cups restart
 
 echo "127.0.0.1 "$SERVERNAME >> /etc/hosts
 echo "127.0.0.1 "$FQDN >> /etc/hosts
 
 crontab -l | { cat; echo "@reboot curl -is -XGET 'https://api.apophisapp.com/iptables/?server=$SERVERNAME&lastAction=online-pending' > /dev/null 2>&1"; } | crontab -
 
-sudo adduser --disabled-password --gecos "" blackfisk
-sudo git clone https://github.com/blackfisk-tech/monitor-service.git /home/blackfisk/monitor-service/ -q
+adduser --disabled-password --gecos "" blackfisk
+git clone https://github.com/blackfisk-tech/monitor-service.git /home/blackfisk/monitor-service/ -q
 cd /home/blackfisk/monitor-service/
-sudo npm install
-sudo pm2 start /home/blackfisk/monitor-service/index.js --name "Monitor Service"
-sudo pm2 startup
-sudo pm2 save
+npm install
+pm2 start /home/blackfisk/monitor-service/index.js --name "Monitor Service"
+pm2 startup
+pm2 save

@@ -22,21 +22,21 @@
     "bonjour": "^3.5.0",
     "cupsdm": "^0.1.2",
     "fd-diskspace": "^1.0.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.11",
     "ncups": "^0.7.7",
     "node-printer": "git+https://github.com/blackfisk-tech/node-printer.git",
     "public-ip": "^2.4.0",
-    "socket.io": "^2.0.4"
+    "socket.io": "^2.1.1"
   },
   "devDependencies": {
-    "ava": "^0.24.0",
+    "ava": "^0.25.0",
     "eslint": "^4.16.0",
     "eslint-config-standard": "^11.0.0-beta.0",
-    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
-    "nodemon": "^1.14.11",
+    "nodemon": "^1.18.4",
     "standard": "^10.0.3"
   }
 }
