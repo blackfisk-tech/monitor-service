@@ -45,9 +45,10 @@ echo "127.0.0.1 "$FQDN >> /etc/hosts
 crontab -l | { cat; echo "@reboot curl -is -XGET 'https://api.apophisapp.com/iptables/?server=$SERVERNAME&lastAction=online-pending' > /dev/null 2>&1"; } | crontab -
 
 adduser --disabled-password --gecos "" blackfisk
-git clone https://github.com/blackfisk-tech/monitor-service.git /home/blackfisk/monitor-service/ -q
-cd /home/blackfisk/monitor-service/
+mkdir /home/blackfisk/apps/
+git clone https://github.com/blackfisk-tech/monitor-service.git /home/blackfisk/apps/monitor-service/ -q
+cd /home/blackfisk/apps/monitor-service/
 /usr/local/bin/npm install
-pm2 start /home/blackfisk/monitor-service/index.js --name "Monitor Service"
+pm2 start /home/blackfisk/apps/monitor-service/index.js --name "Monitor Service"
 pm2 startup
 pm2 save

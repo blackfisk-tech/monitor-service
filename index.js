@@ -21,7 +21,7 @@ let ipAddress = {public: {ip4: null, ip6: null}, private: {ip4: null, ip6: null}
 if (servername.split('-').length !== 3) {
   servername = fs.readFileSync('/etc/servername.conf', 'utf8').trim()
 }
-const socket = io.connect(os.platform() === 'win32' ? 'http://localhost:3000' : 'https://ws.apophisapp.com', {query: 'servername=' + servername + '&version=' + pkg.version})
+const socket = io.connect(os.platform() === 'win32' ? 'http://localhost:3000' : 'https://ws.blackfisk.com', {query: 'servername=' + servername + '&version=' + pkg.version})
 
 publicIp.v4().then(ip => {
   ipAddress.public.ip4 = ip
@@ -59,7 +59,14 @@ socket
   })
   .on('print', function (data) {
     let thisPrinter = new Printer(data.printer)
-    thisPrinter.printText(data.document, data.options)
+    let thisJob = thisPrinter.printText(data.document, data.options)
+    thisJob.on('sent', function () {
+      console.log('sent', thisJob)
+    })
+    thisJob.on('completed', function () {
+      console.log('Job ' + thisJob.identifier + 'has been printed')
+      thisJob.removeAllListeners()
+    })
   })
   .on('bash', function (data) {
     console.log('executing command: ' + data.cmd)
@@ -117,9 +124,10 @@ function findOnlinePrinters () {
   _.each(printerList, printer => {
     printer.online = false
   })
-
+  // lpinfo -v
   ;(async () => {
     _.each(await cups.list(), printer => {
+      console.log('printer', printer)
       if (printer.connection.indexOf('implicitclass') === -1) {
         printerList[printer.name] = printer
         printerList[printer.name]['online'] = true
@@ -179,6 +187,10 @@ manager.on('down', nodes => {
       ...node
     })
   )
+})
+
+manager.on('addPrinters', nodes => {
+  this.findOnlinePrinters()
 })
 
 function sleep (ms) {
