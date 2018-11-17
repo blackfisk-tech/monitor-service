@@ -11,7 +11,7 @@ const cups = require('ncups')
 const Printer = require('node-printer')
 const pkg = require('./package.json')
 
-const manager = cupsdm.createManger({autoAddPrinters: false})
+const manager = cupsdm.createManger({autoAddPrinters: true})
 
 let serverList = {}
 let printerList = {}
@@ -190,7 +190,7 @@ manager.on('down', nodes => {
 })
 
 manager.on('addPrinters', nodes => {
-  this.findOnlinePrinters()
+  findOnlinePrinters()
 })
 
 function sleep (ms) {
