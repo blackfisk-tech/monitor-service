@@ -36,7 +36,12 @@ npm install -g npm@latest
 rm /usr/bin/npm
 /usr/local/bin/npm install pm2 -g
 
+# make sure that you can access it remotely
 cupsctl --remote-admin
+# make sure PI user has access to cups
+sudo usermod -a -G lpadmin pi
+# make sure blackfisk user has access to cups
+sudo usermod -a -G lpadmin blackfisk
 service cups restart
 
 echo "127.0.0.1 "$SERVERNAME >> /etc/hosts
