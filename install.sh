@@ -57,6 +57,12 @@ crontab -l | { cat; echo "@reboot curl -is -XGET 'https://api.apophisapp.com/ipt
 mkdir /home/blackfisk/apps/
 git clone https://github.com/blackfisk-tech/monitor-service.git /home/blackfisk/apps/monitor-service/ -q
 cd /home/blackfisk/apps/monitor-service/
+
+npm cache clean --force
+rm -rf ~/.npm
+rm -rf node_modules
+rm -f package-lock.json
+
 npm install
 pm2 start /home/blackfisk/apps/monitor-service/index.js --name "Monitor Service"
 pm2 startup
