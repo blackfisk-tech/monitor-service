@@ -6,7 +6,7 @@ SERVERTYPE="MS"
 if [ "$1" != "" ]; then
   SERVERTYPE="$1"
 fi
-
+apt-get install curl -y
 VMID=$(dmidecode | grep -i uuid | awk '{print $2}' | tr '[:upper:]' '[:lower:]')
 DID=$(dmidecode -t 4 | grep ID | sed 's/.*ID://;s/ //g')
 DEVICEID=$(echo "$VMID$DID" | md5sum | awk '{print $1}')
@@ -23,18 +23,26 @@ SERVERNAME="$SERVERTYPE-$DEVICEID-$DATACENTER"
 DOMAINNAME="blackfisk.com"
 FQDN="$SERVERNAME.cpe.$DOMAINNAME"
 IPADDR=$(curl 'ipv4bot.whatismyipaddress.com')
+
 echo "$SERVERNAME" > /etc/servername.conf
+echo "127.0.0.1 "$SERVERNAME >> /etc/hosts
+echo "127.0.0.1 "$FQDN >> /etc/hosts
+echo sed -i 's/.*domain.*/domain $DOMAINNAME/' /etc/resolv.conf
+sudo sed -i 's/.*search.*/search $DOMAINNAME/' /etc/resolv.conf
+
 curl -is -XGET 'https://api.apophisapp.com/iptables/add?ip='$IPADDR'&server='$SERVERNAME'&privateIP='
 curl -is -XGET 'https://api.apophisapp.com/iptables/?server='$SERVERNAME'&lastAction=install-monitor'
 
-apt-get purge nodejs node npm -y
-curl -sL https://deb.nodesource.com/setup_8.x | -E bash -
+apt-get purge nodejs node npm  -y
+curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
 apt-get update
-apt-get install jq nodejs npm git lpr cups -y
 apt-get upgrade -y
+apt-get install jq nodejs git lpr cups -y
 npm install -g npm@latest
-rm /usr/bin/npm
-/usr/local/bin/npm install pm2 -g
+
+npm install pm2 -g
+
+adduser --disabled-password --gecos "" blackfisk
 
 # make sure that you can access it remotely
 cupsctl --remote-admin
@@ -44,16 +52,12 @@ sudo usermod -a -G lpadmin pi
 sudo usermod -a -G lpadmin blackfisk
 service cups restart
 
-echo "127.0.0.1 "$SERVERNAME >> /etc/hosts
-echo "127.0.0.1 "$FQDN >> /etc/hosts
-
 crontab -l | { cat; echo "@reboot curl -is -XGET 'https://api.apophisapp.com/iptables/?server=$SERVERNAME&lastAction=online-pending' > /dev/null 2>&1"; } | crontab -
 
-adduser --disabled-password --gecos "" blackfisk
 mkdir /home/blackfisk/apps/
 git clone https://github.com/blackfisk-tech/monitor-service.git /home/blackfisk/apps/monitor-service/ -q
 cd /home/blackfisk/apps/monitor-service/
-/usr/local/bin/npm install
+npm install
 pm2 start /home/blackfisk/apps/monitor-service/index.js --name "Monitor Service"
 pm2 startup
 pm2 save
