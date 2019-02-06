@@ -174,14 +174,17 @@ manager.on('up', nodes => {
   _.each(nodes, async node => {
     let zebraDrivers = await manager.registry.findLocal('Zebra ZPL')
 
-    if (node.model.indexOf('Zebra')) {
+    if (node.model.indexOf('Zebra') !== -1) {
       node.driver = zebraDrivers[0]
     }
-    console.log('up', node.model, node.model.indexOf('Zebra'))
-    socket.emit('printer', {
-      command: 'printer.up',
-      ...node
-    })
+    if (node.uri.indexOf('usb') !== -1) {
+      manager._addPrinters([node])
+      console.log('adding pritner', node)
+      socket.emit('printer', {
+        command: 'printer.up',
+        ...node
+      })
+    }
   })
 })
 
