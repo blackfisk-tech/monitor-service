@@ -19,10 +19,14 @@ if [ "$3" != "" ]; then
   DATACENTER="$3"
 fi
 
+# ifconfig | perl -nle'/dr:(\S+)/ && print $1'
+# ifconfig | grep 'inet addr' | cut -d ':' -f 2 | awk '{ print $1 }' | grep -E '^(192\.168|10\.|172\.1[6789]\.|172\.2[0-9]\.|172\.3[01]\.)'
+
 SERVERNAME="$SERVERTYPE-$DEVICEID-$DATACENTER"
 DOMAINNAME="blackfisk.com"
 FQDN="$SERVERNAME.cpe.$DOMAINNAME"
 IPADDR=$(curl 'ipv4bot.whatismyipaddress.com')
+PRIVATEIPADDR=$(ifconfig | grep 'inet addr' | cut -d ':' -f 2 | awk '{ print $1 }' | grep -E '^(192\.168|10\.|172\.1[6789]\.|172\.2[0-9]\.|172\.3[01]\.)')
 
 echo "$SERVERNAME" > /etc/servername.conf
 echo "127.0.0.1 "$SERVERNAME >> /etc/hosts
@@ -30,7 +34,7 @@ echo "127.0.0.1 "$FQDN >> /etc/hosts
 echo sed -i 's/.*domain.*/domain $DOMAINNAME/' /etc/resolv.conf
 sudo sed -i 's/.*search.*/search $DOMAINNAME/' /etc/resolv.conf
 
-curl -is -XGET 'https://api.apophisapp.com/iptables/add?ip='$IPADDR'&server='$SERVERNAME'&privateIP='
+curl -is -XGET 'https://api.apophisapp.com/iptables/add?ip='$IPADDR'&server='$SERVERNAME'&privateIP='$PRIVATEIPADDR
 curl -is -XGET 'https://api.apophisapp.com/iptables/?server='$SERVERNAME'&lastAction=install-monitor'
 
 apt-get purge nodejs node npm  -y
