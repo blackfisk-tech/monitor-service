@@ -180,7 +180,7 @@ manager.on('up', nodes => {
         driver: 'drv:///sample.drv/zebra.ppd'
       }
       let serialNumber = _.last(node.uri.split('='))
-      node.printer.name = `Zebra_ZPL_Serial_${serialNumber})`
+      node.printer.name = `Zebra_ZPL_Serial_${serialNumber}`
     }
     if (node.uri.indexOf('usb') !== -1) {
       manager._addPrinters([node])
@@ -195,7 +195,8 @@ manager.on('up', nodes => {
 
 manager.on('down', nodes => {
   _.each(nodes, node => {
-    console.log('down', node)
+    console.log('down', node.name)
+    // await cups.uninstall(node.name)
     socket.emit('printer', {
       command: 'printer.down',
       ...node

@@ -8,7 +8,10 @@
 			"path": "D:\\Websites\\node-printer"
 		},
 		{
-			"path": "node_modules"
+			"path": "node_modules\\cupsdm"
+		},
+		{
+			"path": "node_modules\\ncups"
 		}
 	]
 }
