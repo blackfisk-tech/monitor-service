@@ -11,17 +11,17 @@ const cups = require('ncups')
 const Printer = require('node-printer')
 const pkg = require('./package.json')
 
-const manager = cupsdm.createManger({autoAddPrinters: true})
+const manager = cupsdm.createManger({ autoAddPrinters: false })
 
 let serverList = {}
 let printerList = {}
 let servername = os.hostname()
-let ipAddress = {public: {ip4: null, ip6: null}, private: {ip4: null, ip6: null}}
+let ipAddress = { public: { ip4: null, ip6: null }, private: { ip4: null, ip6: null } }
 
 if (servername.split('-').length !== 3) {
   servername = fs.readFileSync('/etc/servername.conf', 'utf8').trim()
 }
-const socket = io.connect(os.platform() === 'win32' ? 'http://localhost:3000' : 'https://ws.blackfisk.com', {query: 'servername=' + servername + '&version=' + pkg.version})
+const socket = io.connect(os.platform() === 'win32' ? 'http://localhost:3000' : 'https://ws.blackfisk.com', { query: 'servername=' + servername + '&version=' + pkg.version })
 
 publicIp.v4().then(ip => {
   ipAddress.public.ip4 = ip
@@ -41,7 +41,7 @@ _.each(os.networkInterfaces(), iface => {
 /*
   Announce Yourself on the network to see if any other services are listening
  */
-bonjour.publish({name: servername, type: 'blackfisk.server', port: 443})
+bonjour.publish({ name: servername, type: 'blackfisk.server', port: 443 })
 
 /*
   usbDetect.on('add', function (device) {
@@ -113,11 +113,11 @@ function findOnlineServers () {
     server.online = false
   })
 
-  bonjour.find({type: 'blackfisk.server'}, function (server) {
+  bonjour.find({ type: 'blackfisk.server' }, function (server) {
     serverList[server.name] = server
     serverList[server.name]['online'] = true
   })
-  socket.emit('blackfisk', {command: 'serverList', servers: serverList})
+  socket.emit('blackfisk', { command: 'serverList', servers: serverList })
 }
 
 function findOnlinePrinters () {
@@ -127,7 +127,6 @@ function findOnlinePrinters () {
   // lpinfo -v
   ;(async () => {
     _.each(await cups.list(), printer => {
-      console.log('printer', printer)
       if (printer.connection.indexOf('implicitclass') === -1) {
         printerList[printer.name] = printer
         printerList[printer.name]['online'] = true
@@ -135,7 +134,7 @@ function findOnlinePrinters () {
     })
   })()
 
-  socket.emit('blackfisk', {command: 'printerList', printers: printerList})
+  socket.emit('blackfisk', { command: 'printerList', printers: printerList })
 }
 
 function heartbeat () {
@@ -172,21 +171,23 @@ function execErrorHandling (error, stdout, stderr) {
   Record Printers
  */
 manager.on('up', nodes => {
-  _.each(nodes, node =>
+  _.each(nodes, node => {
+    console.log('up', node)
     socket.emit('printer', {
       command: 'printer.up',
       ...node
     })
-  )
+  })
 })
 
 manager.on('down', nodes => {
-  _.each(nodes, node =>
+  _.each(nodes, node => {
+    console.log('down', node)
     socket.emit('printer', {
       command: 'printer.down',
       ...node
     })
-  )
+  })
 })
 
 manager.on('addPrinters', nodes => {
