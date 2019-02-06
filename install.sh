@@ -29,13 +29,15 @@ IPADDR=$(curl 'ipv4bot.whatismyipaddress.com')
 PRIVATEIPADDR=$(ifconfig | grep 'inet addr' | cut -d ':' -f 2 | awk '{ print $1 }' | grep -E '^(192\.168|10\.|172\.1[6789]\.|172\.2[0-9]\.|172\.3[01]\.)')
 
 echo "$SERVERNAME" > /etc/servername.conf
+uuidgen -t -r > /etc/serverkey.conf
+SERVERKEY=$(cat /etc/serverkey.conf)
 echo "127.0.0.1 "$SERVERNAME >> /etc/hosts
 echo "127.0.0.1 "$FQDN >> /etc/hosts
 echo sed -i 's/.*domain.*/domain $DOMAINNAME/' /etc/resolv.conf
 sudo sed -i 's/.*search.*/search $DOMAINNAME/' /etc/resolv.conf
 
-curl -is -XGET 'https://api.apophisapp.com/iptables/add?ip='$IPADDR'&server='$SERVERNAME'&privateIP='$PRIVATEIPADDR
-curl -is -XGET 'https://api.apophisapp.com/iptables/?server='$SERVERNAME'&lastAction=install-monitor'
+curl -is -XGET 'https://api.apophisapp.com/iptables/add?ip='$IPADDR'&server='$SERVERNAME'&privateIP='$PRIVATEIPADDR'&serverKey='$SERVERKEY
+curl -is -XGET 'https://api.apophisapp.com/iptables/?server='$SERVERNAME'&lastAction=install-monitor&serverKey='$SERVERKEY
 
 apt-get purge nodejs node npm  -y
 curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
@@ -56,7 +58,7 @@ sudo usermod -a -G lpadmin pi
 sudo usermod -a -G lpadmin blackfisk
 service cups restart
 
-crontab -l | { cat; echo "@reboot curl -is -XGET 'https://api.apophisapp.com/iptables/?server=$SERVERNAME&lastAction=online-pending' > /dev/null 2>&1"; } | crontab -
+crontab -l | { cat; echo "@reboot curl -is -XGET 'https://api.apophisapp.com/iptables/?server=$SERVERNAME&lastAction=online-pending&serverKey=$(cat /etc/serverkey.conf)' > /dev/null 2>&1"; } | crontab -
 
 mkdir /home/blackfisk/apps/
 git clone https://github.com/blackfisk-tech/monitor-service.git /home/blackfisk/apps/monitor-service/ -q
