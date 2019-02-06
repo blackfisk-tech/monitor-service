@@ -177,7 +177,7 @@ manager.on('up', nodes => {
     if (node.model.indexOf('Zebra')) {
       node.driver = zebraDrivers[0]
     }
-    console.log('up', node)
+    console.log('up', node.model, node.model.indexOf('Zebra'))
     socket.emit('printer', {
       command: 'printer.up',
       ...node
