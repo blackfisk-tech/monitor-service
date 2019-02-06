@@ -119,7 +119,7 @@ function findOnlineServers () {
   })
   socket.emit('blackfisk', { command: 'serverList', servers: serverList })
 }
-
+let timeoutFindPrinterOnline = null
 function findOnlinePrinters () {
   _.each(printerList, printer => {
     printer.online = false
@@ -191,6 +191,9 @@ manager.on('up', nodes => {
         ...node
       })
     }
+
+    clearTimeout(timeoutFindPrinterOnline)
+    timeoutFindPrinterOnline = setTimeout(() => findOnlinePrinters(), 10 * 1000)
   })
 })
 
@@ -203,8 +206,8 @@ manager.on('down', nodes => {
       command: 'printer.down',
       ...node
     })
-
-    setTimeout(findOnlinePrinters(), 10 * 1000)
+    clearTimeout(timeoutFindPrinterOnline)
+    timeoutFindPrinterOnline = setTimeout(() => findOnlinePrinters(), 10 * 1000)
   })
 })
 
