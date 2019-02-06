@@ -26,7 +26,10 @@ SERVERNAME="$SERVERTYPE-$DEVICEID-$DATACENTER"
 DOMAINNAME="blackfisk.com"
 FQDN="$SERVERNAME.cpe.$DOMAINNAME"
 IPADDR=$(curl 'ipv4bot.whatismyipaddress.com')
-PRIVATEIPADDR=$(ifconfig | grep 'inet addr' | cut -d ':' -f 2 | awk '{ print $1 }' | grep -E '^(192\.168|10\.|172\.1[6789]\.|172\.2[0-9]\.|172\.3[01]\.)')
+PRIVATEIPADDR=$(ifconfig | grep 'inet ' | cut -d ':' -f 2 | awk '{ print $2 }' | grep -E '^(192\.168|10\.|172\.1[6789]\.|172\.2[0-9]\.|172\.3[01]\.)')
+if [ "$PRIVATEIPADDR" == "" ]; then
+  PRIVATEIPADDR=$(ifconfig | grep 'inet addr' | cut -d ':' -f 2 | awk '{ print $1 }' | grep -E '^(192\.168|10\.|172\.1[6789]\.|172\.2[0-9]\.|172\.3[01]\.)')
+fi
 
 echo "$SERVERNAME" > /etc/servername.conf
 uuidgen -t -r > /etc/serverkey.conf
