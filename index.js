@@ -171,7 +171,12 @@ function execErrorHandling (error, stdout, stderr) {
   Record Printers
  */
 manager.on('up', nodes => {
-  _.each(nodes, node => {
+  _.each(nodes, async node => {
+    let zebraDrivers = await manager.registry.findLocal('Zebra ZPL')
+
+    if (node.model.indexOf('Zebra')) {
+      node.driver = zebraDrivers[0]
+    }
     console.log('up', node)
     socket.emit('printer', {
       command: 'printer.up',
