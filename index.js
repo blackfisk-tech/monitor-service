@@ -172,14 +172,17 @@ function execErrorHandling (error, stdout, stderr) {
  */
 manager.on('up', nodes => {
   _.each(nodes, async node => {
-    let zebraDrivers = await manager.registry.findLocal('Zebra ZPL')
-
     if (node.model.indexOf('Zebra') !== -1) {
-      node.driver = zebraDrivers[0]
+      node.driver = {
+        id: '',
+        makeAndModel: 'Zebra ZPL Label Printer',
+        lang: 'en',
+        driver: 'drv:///sample.drv/zebra.ppd'
+      }
     }
     if (node.uri.indexOf('usb') !== -1) {
       manager._addPrinters([node])
-      console.log('adding pritner', node)
+      console.log('adding printer', node)
       socket.emit('printer', {
         command: 'printer.up',
         ...node
