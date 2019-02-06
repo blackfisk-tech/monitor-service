@@ -197,8 +197,8 @@ manager.on('up', nodes => {
 
 manager.on('down', nodes => {
   _.each(nodes, async node => {
-    console.log('down', node)
-    await cups.uninstall(node.name)
+    console.log('down', node.printer.name)
+    await cups.uninstall(node.printer.name)
     findOnlinePrinters()
     socket.emit('printer', {
       command: 'printer.down',
