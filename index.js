@@ -180,7 +180,7 @@ manager.on('up', nodes => {
         driver: 'drv:///sample.drv/zebra.ppd'
       }
       let serialNumber = _.last(node.uri.split('='))
-      node.printer.name = `Zebra ZPL (serial:${serialNumber})`
+      node.printer.name = `Zebra_ZPL_Serial_${serialNumber})`
     }
     if (node.uri.indexOf('usb') !== -1) {
       manager._addPrinters([node])
