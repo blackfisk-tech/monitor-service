@@ -185,7 +185,7 @@ manager.on('up', nodes => {
     }
     if (node.uri.indexOf('usb') !== -1) {
       manager._addPrinters([node])
-      console.log('adding printer', node)
+      console.log('printer up', node.printer.name)
       socket.emit('printer', {
         command: 'printer.up',
         ...node
@@ -198,7 +198,7 @@ manager.on('up', nodes => {
 
 manager.on('down', nodes => {
   _.each(nodes, async node => {
-    console.log('down', node.printer.name)
+    console.log('printer down', node.printer.name)
     await cups.uninstall(node.printer.name)
     findOnlinePrinters()
     socket.emit('printer', {
