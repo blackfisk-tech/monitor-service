@@ -128,7 +128,6 @@ function findOnlinePrinters () {
   ;(async () => {
     _.each(await cups.list(), printer => {
       if (printer.connection.indexOf('implicitclass') === -1) {
-        console.log(printer.name)
         printerList[printer.name] = printer
         printerList[printer.name]['online'] = true
       }
