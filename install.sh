@@ -6,7 +6,7 @@ SERVERTYPE="MS"
 if [ "$1" != "" ]; then
   SERVERTYPE="$1"
 fi
-apt-get install curl -y
+apt-get install curl uuidgen -y
 VMID=$(dmidecode | grep -i uuid | awk '{print $2}' | tr '[:upper:]' '[:lower:]')
 DID=$(dmidecode -t 4 | grep ID | sed 's/.*ID://;s/ //g')
 DEVICEID=$(echo "$VMID$DID" | md5sum | awk '{print $1}')
