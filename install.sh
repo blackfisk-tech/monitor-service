@@ -43,11 +43,11 @@ curl -is -XGET 'https://api.apophisapp.com/iptables/add?ip='$IPADDR'&server='$SE
 curl -is -XGET 'https://api.apophisapp.com/iptables/?server='$SERVERNAME'&lastAction=install-monitor&serverKey='$SERVERKEY
 
 apt-get purge nodejs node npm  -y
-curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 apt-get update
 apt-get upgrade -y
-apt-get install jq nodejs git lpr cups -y
-npm install -g npm@latest
+apt-get install jq git lpr cups -y
+nvm install 8
 
 npm install pm2 -g
 
