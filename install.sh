@@ -44,6 +44,11 @@ curl -is -XGET 'https://api.apophisapp.com/iptables/?server='$SERVERNAME'&lastAc
 
 apt-get purge nodejs node npm  -y
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+# This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 apt-get update
 apt-get upgrade -y
 apt-get install jq git lpr cups -y
