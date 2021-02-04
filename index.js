@@ -21,7 +21,10 @@ let ipAddress = { public: { ip4: null, ip6: null }, private: { ip4: null, ip6: n
 if (servername.split('-').length !== 3) {
   servername = fs.readFileSync('/etc/servername.conf', 'utf8').trim()
 }
-const socket = io.connect(os.platform() === 'win32' ? 'http://localhost:3000' : 'https://ws.blackfisk.com', { query: 'servername=' + servername + '&version=' + pkg.version })
+const socket = io.connect(os.platform() === 'win32' ? 'http://localhost:3000' : 'https://ws.dev.blackfisk.com', { 
+  transports: ['websocket'],
+  query: 'servername=' + servername + '&version=' + pkg.version,
+})
 
 publicIp.v4().then(ip => {
   ipAddress.public.ip4 = ip
