@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "lint": "eslint index.js",
-    "test": "ava"
+    "lint": "eslint index.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +20,9 @@
   "dependencies": {
     "bonjour": "^3.5.0",
     "cupsdm": "^0.1.2",
+    "debug": "^4.3.1",
     "fd-diskspace": "^1.0.0",
+    "js-yaml": "^3.14.1",
     "lodash": "^4.17.11",
     "ncups": "^0.7.7",
     "node-printer": "git+https://github.com/blackfisk-tech/node-printer.git",
@@ -29,7 +30,6 @@
     "socket.io": "^2.4.0"
   },
   "devDependencies": {
-    "ava": "^0.25.0",
     "eslint": "^4.16.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.14.0",
