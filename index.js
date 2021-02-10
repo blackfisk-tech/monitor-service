@@ -225,9 +225,15 @@ const registerSocketListeners = async (socket, conf, uri) => {
     })
     .on('disconnect', function (reason) {
       console.error('goodbye', reason)
+      console.log('reconnecting socket')
+      socket.open()
     })
     .on('heartbeat', function (a, b, c) {
       heartbeat(socket)
+      if (socket.disconnected) {
+        console.log('Heartbeat detected broken socket. Reconnecting.')
+        socket.open()
+      }
     })
     .on('error', function (error) {
       console.error('error', error)
