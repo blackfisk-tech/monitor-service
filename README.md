@@ -1,10 +1,10 @@
 # monitor-service
-#### Install Arguments: In this example, the first argument "PI" is the server type abbreviation, the second argument "#" is the optional device id formatted as `/[0-9a-z]{16}/`, and the third argument "CPE" is the optional data center abbreviation.
-```
-wget https://raw.githubusercontent.com/blackfisk-tech/monitor-service/master/install.sh ~/.
+
+## Install Arguments: In this example, the first argument "PI" is the server type abbreviation, the second argument "#" is the optional device id formatted as `/[0-9a-z]{16}/`, and the third argument "CPE" is the optional data center abbreviation
+
+```wget https://raw.githubusercontent.com/blackfisk-tech/monitor-service/master/install.sh ~/.
 chmod a+x ~/install.sh
-~/install.sh "PI" "#" "CPE"
-```
+~/install.sh "PI" "#" "CPE"```
 
 ### Debugging
 Uses debug package from TJ Holowaychuk (https://github.com/visionmedia/debug)

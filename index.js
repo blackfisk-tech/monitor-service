@@ -25,11 +25,13 @@ const serverSocket = {}
 const socketServers = {
   'https://ws.dev.blackfisk.com': {
     query: `servername=${servername}&version=${pkg.version}`,
-    transports: ['websocket']
+    transports: ['websocket'],
+    connected: false
   },
   'https://ws.sandbox.blackfisk.com': {
     query: `servername=${servername}&version=${pkg.version}`,
-    transports: ['websocket']
+    transports: ['websocket'],
+    connected: false
   }
   // {
   //   uri: 'https://ws.app.blackfisk.com',
@@ -199,6 +201,7 @@ const registerSocketListeners = async (socket, conf, uri) => {
       console.log(`Connected to ${uri} with socketId:`, socket.id)
       serverSocket[uri] = socket.id
       sockets[socket.id] = socket
+      conf.connected = true
       heartbeat(socket)
     })
     .on('print', function (data) {
@@ -224,15 +227,21 @@ const registerSocketListeners = async (socket, conf, uri) => {
       }
     })
     .on('disconnect', function (reason) {
+      conf.connected = false
       console.error('goodbye', reason)
-      console.log('reconnecting socket')
-      socket.open()
+      console.log('Disconnect received. Reconnecting socket in 5 seconds.')
+      setTimeout(() => {
+        socket.open()
+      }, 5000)
     })
     .on('heartbeat', function (a, b, c) {
       heartbeat(socket)
       if (socket.disconnected) {
-        console.log('Heartbeat detected broken socket. Reconnecting.')
-        socket.open()
+        conf.connected = false
+        console.log('Heartbeat encountered broken socket. Reconnecting in 5 seconds.')
+        setTimeout(() => {
+          socket.open()
+        }, 5000)
       }
     })
     .on('error', function (error) {
@@ -256,14 +265,17 @@ const registerSocketListeners = async (socket, conf, uri) => {
       process.exit(0)
     })
 }
+const startSocket = (conf, uri) => {
+  const socket = io(uri, {
+    transports: conf.transports,
+    query: conf.query
+  })
+  console.log('Attempting socket connection:', {uri: uri, query: socket.query})
+  registerSocketListeners(socket, conf, uri)
+}
 const startSockets = () => {
   _.each(socketServers, (conf, uri) => {
-    const socket = io(uri, {
-      transports: conf.transports,
-      query: conf.query
-    })
-    console.log('Attempting socket connection:', {uri: uri, query: socket.query})
-    registerSocketListeners(socket, conf, uri)
+    startSocket(conf, uri)
   })
 }
 // * Startup
