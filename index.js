@@ -37,12 +37,12 @@ const socketServers = {
     query: `servername=${servername}&version=${pkg.version}`,
     transports: ['websocket'],
     connected: false
-  }
-  // 'https://ws.app.blackfisk.com': {
-  //   query: `servername=${servername}&version=${pkg.version}`,
-  //   transports: ['websocket'],
-  //   connected: false
-  // }
+  },
+  'https://ws.app.blackfisk.com': {
+    query: `servername=${servername}&version=${pkg.version}`,
+    transports: ['websocket'],
+    connected: false
+  },
 }
 
 // * CUPS Manager
