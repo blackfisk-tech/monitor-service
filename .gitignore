@@ -60,3 +60,6 @@ typings/
 .env
 
 *.sublime-workspace
+
+# Local history
+.history
