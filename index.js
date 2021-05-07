@@ -42,7 +42,7 @@ const socketServers = {
     query: `servername=${servername}&version=${pkg.version}`,
     transports: ['websocket'],
     connected: false
-  },
+  }
 }
 
 // * CUPS Manager
@@ -271,12 +271,16 @@ const registerSocketListeners = async (socket, conf, uri) => {
     })
 }
 const startSocket = (conf, uri) => {
-  const socket = io(uri, {
-    transports: conf.transports,
-    query: conf.query
-  })
-  console.log('Attempting socket connection:', {uri: uri, query: socket.query})
-  registerSocketListeners(socket, conf, uri)
+  try {
+    const socket = io(uri, {
+      transports: conf.transports,
+      query: conf.query
+    })
+    console.log('Attempting socket connection:', {uri: uri, query: socket.query})
+    registerSocketListeners(socket, conf, uri)
+  } catch (err) {
+    console.error(err)
+  }
 }
 const startSockets = () => {
   _.each(socketServers, (conf, uri) => {
