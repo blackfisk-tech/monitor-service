@@ -26,22 +26,30 @@ const socketServers = {
   'https://ws.blackfisk.com': {
     query: `servername=${servername}&version=${pkg.version}`,
     transports: ['websocket'],
-    connected: false
+    connected: false,
+    reconnectTimer: null,
+    reconnectAttempts: 0
   },
   'https://ws.dev.blackfisk.com': {
     query: `servername=${servername}&version=${pkg.version}`,
     transports: ['websocket'],
-    connected: false
+    connected: false,
+    reconnectTimer: null,
+    reconnectAttempts: 0
   },
   'https://ws.sandbox.blackfisk.com': {
     query: `servername=${servername}&version=${pkg.version}`,
     transports: ['websocket'],
-    connected: false
+    connected: false,
+    reconnectTimer: null,
+    reconnectAttempts: 0
   },
   'https://ws.app.blackfisk.com': {
     query: `servername=${servername}&version=${pkg.version}`,
     transports: ['websocket'],
-    connected: false
+    connected: false,
+    reconnectTimer: null,
+    reconnectAttempts: 0
   }
 }
 
@@ -204,6 +212,11 @@ const registerSocketListeners = async (socket, conf, uri) => {
   socket
     .on('connect', function () {
       console.log(`Connected to ${uri} with socketId:`, socket.id)
+      if (socket.reconnectTimer) {
+        clearInterval(socket.reconnectTimer)
+        socket.reconnectTimer = null
+        socket.reconnectAttempts = 0
+      }
       serverSocket[uri] = socket.id
       sockets[socket.id] = socket
       conf.connected = true
@@ -263,11 +276,17 @@ const registerSocketListeners = async (socket, conf, uri) => {
     })
     .on('reconnect_error', function (a, b, c) {
       console.error('reconnect_error', a, b, c)
-      process.exit(0)
+      if (!socket.reconnectTimer) {
+        socket.reconnectAttempts++
+        socket.reconnectTimer = setInterval(() => registerSocketListeners(socket, conf, uri), 1000 * 10 * socket.reconnectAttempts, `Reconnect attempt: ${socket.reconnectAttempts}`)
+      }
     })
     .on('reconnect_failed', function (a, b, c) {
       console.error('reconnect_failed', a, b, c)
-      process.exit(0)
+      if (!socket.reconnectTimer) {
+        socket.reconnectAttempts++
+        socket.reconnectTimer = setInterval(() => registerSocketListeners(socket, conf, uri), 1000 * 10 * socket.reconnectAttempts, `Reconnect attempt: ${socket.reconnectAttempts}`)
+      }
     })
 }
 const startSocket = (conf, uri) => {
