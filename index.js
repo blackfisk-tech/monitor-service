@@ -278,14 +278,14 @@ const registerSocketListeners = async (socket, conf, uri) => {
       console.error('reconnect_error', a, b, c)
       if (!socket.reconnectTimer) {
         socket.reconnectAttempts++
-        socket.reconnectTimer = setInterval(() => registerSocketListeners(socket, conf, uri), 1000 * 10 * socket.reconnectAttempts, `Reconnect attempt: ${socket.reconnectAttempts}`)
+        socket.reconnectTimer = setInterval(() => registerSocketListeners(socket, conf, uri), 1000 * 10 * (socket.reconnectAttempts + 1), `Reconnect attempt: ${socket.reconnectAttempts}`)
       }
     })
     .on('reconnect_failed', function (a, b, c) {
       console.error('reconnect_failed', a, b, c)
       if (!socket.reconnectTimer) {
         socket.reconnectAttempts++
-        socket.reconnectTimer = setInterval(() => registerSocketListeners(socket, conf, uri), 1000 * 10 * socket.reconnectAttempts, `Reconnect attempt: ${socket.reconnectAttempts}`)
+        socket.reconnectTimer = setInterval(() => registerSocketListeners(socket, conf, uri), 1000 * 10 * (socket.reconnectAttempts + 1), `Reconnect attempt: ${socket.reconnectAttempts}`)
       }
     })
 }
