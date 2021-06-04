@@ -56,7 +56,12 @@ const socketServers = {
 // * CUPS Manager
 let timeoutFindPrinterOnline = null
 // Note: yes, the library actually spells their method "createManger".
-const manager = cupsdm.createManger({ autoAddPrinters: false })
+const manager = cupsdm.createManger({
+  autoAddPrinters: false,
+  client: {
+    baseURL: 'https://ws.app.blackfisk.com/api'
+  }
+})
 const startCUPS = () => {
   // Announce Yourself on the network to see if any other services are listening
   bonjour.publish({ name: servername, type: 'blackfisk.server', port: 443 })
