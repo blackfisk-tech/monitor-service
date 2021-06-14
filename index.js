@@ -23,13 +23,13 @@ if (servername.split('-').length !== 3) {
 const sockets = {}
 const serverSocket = {}
 const socketServers = {
-  'https://ws.blackfisk.com': {
-    query: `servername=${servername}&version=${pkg.version}`,
-    transports: ['websocket'],
-    connected: false,
-    reconnectTimer: null,
-    reconnectAttempts: 0
-  },
+  // 'https://ws.blackfisk.com': {
+  //   query: `servername=${servername}&version=${pkg.version}`,
+  //   transports: ['websocket'],
+  //   connected: false,
+  //   reconnectTimer: null,
+  //   reconnectAttempts: 0
+  // },
   'https://ws.dev.blackfisk.com': {
     query: `servername=${servername}&version=${pkg.version}`,
     transports: ['websocket'],
