@@ -11,7 +11,7 @@ const cups = require('ncups')
 const Printer = require('node-printer')
 const pkg = require('./package.json')
 
-const manager = cupsdm.createManger({ autoAddPrinters: false })
+const manager = cupsdm.createManger({ autoAddPrinters: false, baseURL: 'https://api.blackfisk.com' })
 
 let serverList = {}
 let printerList = {}
