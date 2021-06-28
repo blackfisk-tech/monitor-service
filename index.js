@@ -174,9 +174,11 @@ const detectIPAddress = () => {
   })
 }
 // * Socket Servers
-const heartbeat = (socket) => {
+const onConnect = () => {
   findOnlineServers()
   findOnlinePrinters()
+}
+const heartbeat = (socket) => {
   const socketServer = _.invert(serverSocket)
   console.log('heartbeat', {
     socketServer: socketServer[socket.id],
@@ -225,9 +227,11 @@ const registerSocketListeners = async (socket, conf, uri) => {
       serverSocket[uri] = socket.id
       sockets[socket.id] = socket
       conf.connected = true
+      onConnect()
       heartbeat(socket)
     })
     .on('print', function (data) {
+      console.log('PRINT: data', data)
       let thisPrinter = new Printer(data.printer)
       let thisJob = thisPrinter.printText(data.document, data.options)
       thisJob.on('sent', function () {
