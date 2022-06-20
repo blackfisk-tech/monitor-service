@@ -27,7 +27,7 @@ if (servername.split('-').length !== 3) {
 const sockets = {}
 const serverSocket = {}
 const socketServers = {}
-const socketServerEndpoints = ['https://ws.next.blackfisk.com', 'https://ws.app.blackfisk.com']
+const socketServerEndpoints = ['https://ws.next.blackfisk.com']
 for (const socketServerEndpoint of socketServerEndpoints) {
   socketServers[socketServerEndpoint] = {
     query: `servername=${servername}&version=${pkg.version}`,
