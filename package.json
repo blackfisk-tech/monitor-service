@@ -22,7 +22,7 @@
     "cupsdm": "^0.1.2",
     "debug": "^4.3.4",
     "fd-diskspace": "^1.0.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "ncups": "^0.7.7",
     "node-printer": "git+https://github.com/blackfisk-tech/node-printer.git",
     "public-ip": "^6.0.0",
