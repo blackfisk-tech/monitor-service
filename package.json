@@ -26,7 +26,8 @@
     "ncups": "^0.7.7",
     "node-printer": "git+https://github.com/blackfisk-tech/node-printer.git",
     "public-ip": "^6.0.0",
-    "socket.io": "^4.5.1"
+    "socket.io": "^4.5.1",
+    "socket.io-client": "^4.5.1"
   },
   "devDependencies": {
     "eslint": "^8.18.0",

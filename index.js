@@ -1,4 +1,4 @@
-const io = require('socket.io-client')
+const { io } = require('socket.io-client')
 const os = require('os')
 const fs = require('fs')
 const ds = require('fd-diskspace')
