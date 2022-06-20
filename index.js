@@ -1,16 +1,20 @@
-const { io } = require('socket.io-client')
-const os = require('os')
-const fs = require('fs')
-const ds = require('fd-diskspace')
-const exec = require('child_process').exec
-const publicIp = require('public-ip')
-const bonjour = require('bonjour')()
-const _ = require('lodash')
-const cupsdm = require('cupsdm')
-const cups = require('ncups')
-const Printer = require('node-printer')
+import { io } from 'socket.io-client'
+import os from 'os'
+import fs from 'fs'
+import ds from 'fd-diskspace'
+import { exec } from 'child_process'
+import { publicIpv4 } from 'public-ip'
+import bonjourModule from 'bonjour'
+import _ from 'lodash'
+import cupsdm from 'cupsdm'
+import cups from 'ncups'
+import Printer from 'node-printer'
+import debugModule from 'debug'
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
 const pkg = require('./package.json')
-const debug = require('debug')('monitor-service')
+const debug = new debugModule('monitor-service')
+const bonjour = new bonjourModule()
 
 let serverList = {}
 let printerList = {}
@@ -136,7 +140,7 @@ const registerCupsListeners = async () => {
 // * Ip Addresses
 const ipAddress = { public: { ip4: null, ip6: null }, private: { ip4: null, ip6: null } }
 const detectIPAddress = () => {
-  publicIp.v4().then(ip => {
+  publicIpv4.then(ip => {
     ipAddress.public.ip4 = ip
     console.log(`connect ${servername} - ${ipAddress.public.ip4}`)
   })
