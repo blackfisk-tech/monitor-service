@@ -139,11 +139,10 @@ const registerCupsListeners = async () => {
 }
 // * Ip Addresses
 const ipAddress = { public: { ip4: null, ip6: null }, private: { ip4: null, ip6: null } }
-const detectIPAddress = () => {
-  publicIpv4.then(ip => {
-    ipAddress.public.ip4 = ip
-    console.log(`connect ${servername} - ${ipAddress.public.ip4}`)
-  })
+const detectIPAddress = async () => {
+  const ip = await publicIpv4()
+  ipAddress.public.ip4 = ip
+  console.log(`connect ${servername} - ${ipAddress.public.ip4}`)
   _.each(os.networkInterfaces(), iface => {
     _.each(iface, adapter => {
       if (adapter.address.match(/(^192\.168\.)|(^10\.)|(^172\.1[6-9]\.)|(^172\.2[0-9]\.)|(^172\.3[0-1]\.)|(^::1$)|(^[fF][cCdD])/) && !adapter.internal) {

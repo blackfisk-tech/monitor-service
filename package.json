@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/blackfisk-tech/monitor-service.git"
   },
-  "author": "Jeremy R DeYoung",
+  "author": "Garion Berg",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/blackfisk-tech/monitor-service/issues"
