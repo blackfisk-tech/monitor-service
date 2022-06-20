@@ -44,7 +44,7 @@ let timeoutFindPrinterOnline = null
 const manager = cupsdm.createManger({
   autoAddPrinters: false,
   client: {
-    baseURL: 'https://ws.app.blackfisk.com/api'
+    baseURL: 'https://ws.next.blackfisk.com/api'
   }
 })
 const startCUPS = () => {
