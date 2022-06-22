@@ -1,6 +1,6 @@
 {
   "name": "monitor-service",
-  "version": "1.0.12",
+  "version": "1.1.0",
   "description": "A web service install script & monitoring agent for the Blackfisk network",
   "exports": "./index.js",
   "scripts": {
@@ -8,8 +8,8 @@
     "lint": "eslint index.js"
   },
   "type": "module",
-  "engines" : { 
-    "node" : ">=14.16" 
+  "engines": {
+    "node": ">=14.16"
   },
   "repository": {
     "type": "git",
