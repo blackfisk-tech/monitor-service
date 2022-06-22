@@ -55,36 +55,37 @@ const startCUPS = () => {
   // Listen for Printer Up, Down, and Add
   registerCupsListeners()
 }
-const findOnlinePrinters = () => {
-  _.each(printerList, printer => {
-    printer.online = false
-  })
+const findOnlinePrinters = async () => {
   // lpinfo -v
-  ;(async () => {
-    _.each(await cups.list(), printer => {
-      if (printer.connection.indexOf('implicitclass') === -1) {
-        printerList[printer.name] = printer
-        printerList[printer.name]['online'] = true
-      }
-    })
-  })()
-  _.each(sockets, socket => {
+  const PrinterConfigs = await cups.list()
+  for (const PrinterConfig of PrinterConfigs) {
+    if (PrinterConfig.connection.indexOf('implicitclass') === -1) {
+      printerList[PrinterConfig.name] = PrinterConfig
+      printerList[PrinterConfig.name]['online'] = true
+    }
+  }
+  // TODO: Sending the message to the first socket is not ideal. Find a better solution to deduplicate the messages, potentially using redis e.g. redis-emitter.
+  if (Object.keys(sockets).length > 0) {
+    const socket = Object.values(sockets)[0]
+    console.log('Broadcasting connected printers:', Object.keys(printerList))
     socket.emit('blackfisk', { command: 'printerList', printers: printerList })
-  })
+  }
 }
-const findOnlineServers = () => {
-  _.each(serverList, server => {
-    server.online = false
-  })
+// const findOnlineServers = () => {
+//   _.each(serverList, server => {
+//     server.online = false
+//   })
 
-  bonjour.find({ type: 'blackfisk.server' }, function (server) {
-    serverList[server.name] = server
-    serverList[server.name]['online'] = true
-  })
-  _.each(sockets, socket => {
-    socket.emit('blackfisk', { command: 'serverList', servers: serverList })
-  })
-}
+//   bonjour.find({ type: 'blackfisk.server' }, function (server) {
+//     serverList[server.name] = server
+//     serverList[server.name]['online'] = true
+//   })
+//   // TODO: Sending the message to the first socket is not ideal. Find a better solution to deduplicate the messages, potentially using redis e.g. redis-emitter.
+//   if (Object.keys(sockets).length > 0) {
+//     const socket = Object.values(sockets)[0]
+//     socket.emit('blackfisk', { command: 'serverList', servers: serverList })
+//   }
+// }
 const registerCupsListeners = async () => {
   /*
     Record Printers
@@ -103,30 +104,29 @@ const registerCupsListeners = async () => {
       }
       if (node.uri.indexOf('usb') !== -1) {
         manager._addPrinters([node])
-        console.log('printer up', node.printer.name)
-        _.each(sockets, (socket) => {
-          socket.emit('printer', {
-            command: 'printer.up',
-            ...node
-          })
-        })
+        console.log('USB Printer discovered. Adding printer:', node.printer.name)
+        // // TODO: Sending the message to the first socket is not ideal. Find a better solution to deduplicate the messages, potentially using redis e.g. redis-emitter.
+        // if (Object.keys(sockets).length > 0) {
+        //   const socket = Object.values(sockets)[0]
+        //   socket.emit('blackfisk', { command: 'printer.up', ...node })
+        // }
+        clearTimeout(timeoutFindPrinterOnline)
+        timeoutFindPrinterOnline = setTimeout(() => findOnlinePrinters(), 10 * 1000)
       }
-      clearTimeout(timeoutFindPrinterOnline)
-      timeoutFindPrinterOnline = setTimeout(() => findOnlinePrinters(), 10 * 1000)
     })
   })
 
   manager.on('down', nodes => {
     _.each(nodes, async node => {
       if (node.uri.indexOf('usb') !== -1) {
-        console.log('printer down', node.printer.name)
+        console.log('USB Printer disconnected. Removing printer:', node.printer.name)
         await cups.uninstall(node.printer.name)
-        _.each(sockets, (socket) => {
-          socket.emit('printer', {
-            command: 'printer.down',
-            ...node
-          })
-        })
+        // _.each(sockets, (socket) => {
+        //   socket.emit('printer', {
+        //     command: 'printer.down',
+        //     ...node
+        //   })
+        // })
         clearTimeout(timeoutFindPrinterOnline)
         timeoutFindPrinterOnline = setTimeout(() => findOnlinePrinters(), 10 * 1000)
       }
@@ -159,7 +159,7 @@ const detectIPAddress = async () => {
 }
 // * Socket Servers
 const onConnect = () => {
-  findOnlineServers()
+  // findOnlineServers()
   findOnlinePrinters()
 }
 const heartbeat = (socket) => {
